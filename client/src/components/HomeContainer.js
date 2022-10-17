@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import FeedPage from "./FeedPage";
-// import UserProfilePage from "./UserProfilePage";
-// import MemberList from "./MemberList";
-// import Member from "./Member";
-// import InviteUserPage from "./InviteUserPage";
+import UserProfilePage from "./UserProfilePage";
+import MemberList from "./MemberList";
+import Member from "./Member";
+import InviteUserPage from "./InviteUserPage";
 
 function HomeContainer({ currentUser }) {
   const [posts, setPosts] = useState([]);
@@ -24,7 +24,7 @@ function HomeContainer({ currentUser }) {
 
   return (
     <>
-    <p>home</p>
+      <p>home</p>
       <Routes>
         <Route
           path="/"
@@ -37,7 +37,7 @@ function HomeContainer({ currentUser }) {
             />
           }
         />
-        {/* <Route
+        <Route
           path="profile"
           element={
             <UserProfilePage
@@ -45,8 +45,8 @@ function HomeContainer({ currentUser }) {
               onRenderFilteredPosts={renderFilteredPosts}
             />
           }
-        /> */}
-          {/* <Route
+        />
+        <Route
           path="members"
           element={
             <MemberList
@@ -54,8 +54,8 @@ function HomeContainer({ currentUser }) {
               onClickedMember={handleClickMember}
             />
           }
-        /> */}
-        {/* <Route
+        />
+        <Route
           path="/members/:userId"
           element={
             <Member
@@ -63,10 +63,13 @@ function HomeContainer({ currentUser }) {
               onRenderFilteredPosts={renderFilteredPosts}
             />
           }
-        /> */}
-        {/* {currentUser.admin ? (
-          <Route path="invite" element={<InviteUserPage />} />
-        ) : null} */}
+        />
+        {currentUser.admin ? (
+          <Route
+            path="invite"
+            element={<InviteUserPage currentUser={currentUser} />}
+          />
+        ) : null}
       </Routes>
     </>
   );

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import PostCard from "./PostCard";
 
 function PostContainer({ currentUser, posts, onRenderFilteredPosts }) {
-  // const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     fetch(`/group_posts/${currentUser.group_id}`)
@@ -10,33 +10,33 @@ function PostContainer({ currentUser, posts, onRenderFilteredPosts }) {
       .then((psts) => onRenderFilteredPosts(psts));
   }, [posts.id]);
 
-  // useEffect(() => {
-  //   fetch(`/group_comments/${currentUser.group_id}`)
-  //     .then((res) => res.json())
-  //     .then((comments) => setComments(comments));
-  // }, [comments.id]);
+  useEffect(() => {
+    fetch(`/group_comments/${currentUser.group_id}`)
+      .then((res) => res.json())
+      .then((comments) => setComments(comments));
+  }, [comments.id]);
 
   function handleDeletePost(deletedItem) {
     const updatedPosts = posts.filter((post) => post.id !== deletedItem.id);
     onRenderFilteredPosts(updatedPosts);
   }
 
-  // function handleAddComment(newComment) {
-  //   setComments([...comments, newComment]);
-  // }
+  function handleAddComment(newComment) {
+    setComments([...comments, newComment]);
+  }
 
-  // function handleDeleteComment(deletedItemID) {
-  //   const updatedComments = comments.filter((com) => com.id !== deletedItemID);
-  //   setComments(updatedComments);
-  // }
+  function handleDeleteComment(deletedItemID) {
+    const updatedComments = comments.filter((com) => com.id !== deletedItemID);
+    setComments(updatedComments);
+  }
 
-  // function handleEditComment(updatedItem) {
-  //   const updatedComments = comments.map((com) =>
-  //     com.id === updatedItem.id ? updatedItem : com
-  //   );
+  function handleEditComment(updatedItem) {
+    const updatedComments = comments.map((com) =>
+      com.id === updatedItem.id ? updatedItem : com
+    );
 
-  //   setComments(updatedComments);
-  // }
+    setComments(updatedComments);
+  }
 
   const sortedPosts = [...posts].sort((a, b) =>
     a.created_at > b.created_at ? -1 : 1
@@ -47,11 +47,11 @@ function PostContainer({ currentUser, posts, onRenderFilteredPosts }) {
       <PostCard
         currentUser={currentUser}
         posts={sortedPosts}
-        // comments={comments}
+        comments={comments}
         onClickDelete={handleDeletePost}
-        // onSubmitAddCom={handleAddComment}
-        // onDeleteComment={handleDeleteComment}
-        // onEditComment={handleEditComment}
+        onSubmitAddCom={handleAddComment}
+        onDeleteComment={handleDeleteComment}
+        onEditComment={handleEditComment}
       />
     </>
   );

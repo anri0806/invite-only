@@ -21,14 +21,14 @@ function PostCard({
         currentUser={currentUser}
         onClickDelete={onClickDelete}
       />
-      {/* <ReadOnlyComment
+      <ReadOnlyComment
         comments={comments}
         currentUser={currentUser}
         postId={post.id}
         onSubmitAddCom={onSubmitAddCom}
         onDeleteComment={onDeleteComment}
         onEditComment={onEditComment}
-      /> */}
+      />
     </div>
   ));
 

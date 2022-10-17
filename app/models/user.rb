@@ -1,16 +1,22 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   belongs_to :group
 
-  # has_many :commented_posts, foreign_key: "user_id", class_name: "Post", dependent: :destroy
+  has_many :commented_posts, foreign_key: "user_id", class_name: "Post", dependent: :destroy
      
-  # has_many :comments
-  # has_many :posts, through: :comments
+  has_many :comments
+  has_many :posts, through: :comments
      
-  # validates :username, :email, presence: true
+  attr_accessor :invitation_instructions
+
+def self.invite_guest!(attributes={}, invited_by=nil)
+ self.invite!(attributes, invited_by) do |invitable|
+   invitable.invitation_instructions = :guest_invitation_instructions
+ end
+end
 
 end

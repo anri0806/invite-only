@@ -23,8 +23,8 @@ p2 = Post.create(caption: "Post anything related to our team here. (i.e. practic
 p3 = Post.create(caption: "This is awesome!", created_at: "2022-9-14 11:34AM", user_id: u2.id, group_id: g1.id)
 
 
-# c1 = Comment.create(content: "Thank you for inviting me.", created_at: "2022-9-14 10:00AM", user_id: u2.id, post_id: p1.id, group_id: g1.id)
-# c2 = Comment.create(content: "Awesome!", created_at: "2022-9-16 10:00PM", user_id: u4.id, post_id: p2.id, group_id: g2.id )
+c1 = Comment.create(content: "Thank you for inviting me.", created_at: "2022-9-14 10:00AM", user_id: u2.id, post_id: p1.id, group_id: g1.id)
+c2 = Comment.create(content: "Awesome!", created_at: "2022-9-16 10:00PM", user_id: u4.id, post_id: p2.id, group_id: g2.id )
 
 
 puts "seeding done 🌱"

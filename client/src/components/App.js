@@ -30,6 +30,7 @@ function App() {
     navigate("/");
   }
 
+
   return (
     <div>
       <NavBar currentUser={currentUser} onLogout={handleLogout} />
