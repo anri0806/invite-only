@@ -22,6 +22,18 @@ class UsersInvitationsController < Devise::InvitationsController
         new_user = User.accept_invitation!(invitation_token: params[:invitation_token], username: params[:user][:username], password: params[:user][:password], admin: params[:user][:admin])
 
         if new_user.valid?
+
+          # def create
+          #   self.resource = warden.authenticate!(auth_options)
+          #   set_flash_message!(:notice, :signed_in)
+          #   sign_in(resource_name, resource)
+          #   yield resource if block_given?
+          #   respond_with resource, location: after_sign_in_path_for(resource)
+          # end
+
+          ## ADD HERE
+          
+
           render json: new_user, status: :ok
         else
           render json: {error: "Couldn't update user."}, status: :unprocessable_entity

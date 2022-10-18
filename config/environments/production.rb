@@ -9,6 +9,13 @@ Rails.application.configure do
     # # For urls in email
     # config.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
   
+  ########### Controll sending email HERE !!!
+  # config.action_mailer.delivery_method = :test
+  # config.action_mailer.delivery_method = :sendmail
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.default_options = {from: 'no-reply@example.com'}
+  ######################
+
 
   # Code is not reloaded between requests.
   config.cache_classes = true

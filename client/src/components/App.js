@@ -1,8 +1,8 @@
 import "../App.css";
 import WebContainer from "./WebContainer";
-// import WelcomeContainer from "./WelcomeContainer";
-// import HomeContainer from "./HomeContainer";
-// import NavBar from "./NavBar";
+import WelcomeContainer from "./WelcomeContainer";
+import HomeContainer from "./HomeContainer";
+import NavBar from "./NavBar";
 import InviteeSignup from "./InviteeSignUp";
 import { Routes, Route, useParams, useLocation } from "react-router-dom";
 
@@ -12,10 +12,11 @@ import { useState } from "react";
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
-  const navigate = useNavigate();
-  let { invitation_token } = useParams();
-  let location = useLocation();
+  // console.log(currentUser);
 
+  const navigate = useNavigate();
+  // let { invitation_token } = useParams();
+  let location = useLocation();
 
   // useEffect(() => {
   //   fetch("/me").then((response) => {
@@ -27,6 +28,8 @@ function App() {
 
   function handleLogin(user) {
     setCurrentUser(user);
+
+    navigate("/");
   }
 
   function handleLogout() {
@@ -35,21 +38,22 @@ function App() {
     navigate("/");
   }
 
-  ///users/invitation/accept?invitation_token=rC1VUzksD_GdYxqkUvpY"
-
   return (
     <div>
+      <NavBar currentUser={currentUser} onLogout={handleLogout} />
+      {currentUser ? (
+        <HomeContainer currentUser={currentUser} />
+      ) : (
+        <WelcomeContainer currentUser={currentUser} onLogin={handleLogin} />
+      )}
+
       <Routes>
         <Route
           path="users/invitation/accept"
-          element={
-            <InviteeSignup
-              onLogin={handleLogin}
-              location={location}
-            />
-          }
+          element={<InviteeSignup onLogin={handleLogin} location={location} />}
         />
-        <Route
+        <Route path="*" />
+        {/* <Route
           path="*"
           element={
             <WebContainer
@@ -58,7 +62,7 @@ function App() {
               onLogout={handleLogout}
             />
           }
-        />
+        /> */}
       </Routes>
     </div>
   );

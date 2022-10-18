@@ -6,7 +6,7 @@ function InviteeSignup({ onLogin, location }) {
   const [confirmationPassword, setConfirmationPassword] = useState("");
   const [errors, setErrors] = useState(null);
 
-//   console.log(location.search.slice(18));
+  //   console.log(location.search.slice(18));
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -29,9 +29,9 @@ function InviteeSignup({ onLogin, location }) {
       }
     ).then((res) => {
       if (res.ok) {
-        res.json().then((currentUser) => {
+        res.json().then((user) => {
           console.log("Successfully logged in.");
-          onLogin(currentUser);
+            onLogin(user);
         });
       } else {
         res.json().then((err) => setErrors(err.errors));

@@ -10,7 +10,7 @@ function WelcomeContainer({ onLogin }) {
       <Routes>
         <Route path="/" element={<Login onLogin={onLogin} />} />
         <Route path="register" element={<Register onLogin={onLogin} />} />
-        <Route path="users/invitation/accept" element={<InviteeSignup />} />
+        {/* <Route path="users/invitation/accept" element={<InviteeSignup />} /> */}
       </Routes>
     </div>
   );

@@ -24,7 +24,6 @@ function HomeContainer({ currentUser }) {
 
   return (
     <>
-      <p>home</p>
       <Routes>
         <Route
           path="/"
