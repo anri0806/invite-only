@@ -1,16 +1,21 @@
 import "../App.css";
-import WelcomeContainer from "./WelcomeContainer";
-import HomeContainer from "./HomeContainer";
-import NavBar from "./NavBar";
+import WebContainer from "./WebContainer";
+// import WelcomeContainer from "./WelcomeContainer";
+// import HomeContainer from "./HomeContainer";
+// import NavBar from "./NavBar";
+import InviteeSignup from "./InviteeSignUp";
+import { Routes, Route, useParams, useLocation } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   const navigate = useNavigate();
+  let { invitation_token } = useParams();
+  let location = useLocation();
+
 
   // useEffect(() => {
   //   fetch("/me").then((response) => {
@@ -30,15 +35,31 @@ function App() {
     navigate("/");
   }
 
+  ///users/invitation/accept?invitation_token=rC1VUzksD_GdYxqkUvpY"
 
   return (
     <div>
-      <NavBar currentUser={currentUser} onLogout={handleLogout} />
-      {currentUser ? (
-        <HomeContainer currentUser={currentUser} />
-      ) : (
-        <WelcomeContainer currentUser={currentUser} onLogin={handleLogin} />
-      )}
+      <Routes>
+        <Route
+          path="users/invitation/accept"
+          element={
+            <InviteeSignup
+              onLogin={handleLogin}
+              location={location}
+            />
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <WebContainer
+              currentUser={currentUser}
+              onLogin={handleLogin}
+              onLogout={handleLogout}
+            />
+          }
+        />
+      </Routes>
     </div>
   );
 }

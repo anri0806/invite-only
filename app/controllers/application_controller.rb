@@ -4,7 +4,15 @@ class ApplicationController < ActionController::API
 
   def root
     if Rails.env.development?
-      Rails.application.routes.default_url_options = { host: 'localhost:4000', protocol: 'http' }
+
+      # For urls in email
+      Rails.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
+
+      # absolute urls with routing url helpers.
+      # Rails.application.routes.default_url_options ={host: 'localhost:3000', protocol: 'http' }
+      # Rails.application.routes.default_url_options = { host: 'localhost:3000', protocol: 'http' }
+      # config.routes.default_url_options  or  config.routes.default_url_options[:host] = 'example.com'
+
     end
   end
 
