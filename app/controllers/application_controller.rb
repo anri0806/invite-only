@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
+  before_action :configure_permitted_parameters, if: :devise_controller?
   respond_to :json
+  
 
   def root
     if Rails.env.development?
@@ -15,6 +17,13 @@ class ApplicationController < ActionController::API
 
     end
   end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :group_id, :admin])
+  end
+  
 
   # before_action :authorize
 

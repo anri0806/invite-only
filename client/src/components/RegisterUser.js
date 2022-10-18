@@ -11,7 +11,6 @@ function RegisterUser({ onLogin, currentGroup }) {
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    
   }
 
   function handleSubmit(e) {
@@ -39,6 +38,9 @@ function RegisterUser({ onLogin, currentGroup }) {
         res.json().then((err) => setErrors(err.errors));
       }
     });
+
+    setFormData({ username: "", email: "", password: "" });
+    setPasswordConfirm("");
   }
 
   return (

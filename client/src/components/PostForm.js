@@ -23,7 +23,7 @@ function PostForm({ currentUser, onSubmitAdd }) {
       if (res.ok) {
         res.json().then((newPost) => {
           onSubmitAdd(newPost)
-          console.log(newPost)
+          // console.log(newPost)
         });
       } else {
         res.json().then((err) => setErrors(err.errors));

@@ -11,6 +11,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  # def create
+  #   byebug
+  # end
+
+  #params[:user]
+
   # POST /resource
   # def create
   #   super

@@ -1,5 +1,7 @@
 
 function Profile({ currentUser }) {
+  // console.log(currentUser)
+
     return (
       <>
         <h4>User Profile</h4>
