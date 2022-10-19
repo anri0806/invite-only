@@ -1,13 +1,12 @@
 import "../App.css";
-import WebContainer from "./WebContainer";
 import WelcomeContainer from "./WelcomeContainer";
 import HomeContainer from "./HomeContainer";
 import NavBar from "./NavBar";
 import InviteeSignup from "./InviteeSignUp";
-import { Routes, Route, useParams, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -18,19 +17,21 @@ function App() {
   // let { invitation_token } = useParams();
   let location = useLocation();
 
-  // useEffect(() => {
-  //   fetch("/me").then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((user) => setCurrentUser(user));
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setCurrentUser(user));
+      }
+    });
+  }, []);
 
   function handleLogin(user) {
     setCurrentUser(user);
 
     navigate("/");
   }
+
+  console.log(currentUser);
 
   function handleLogout() {
     setCurrentUser(null);

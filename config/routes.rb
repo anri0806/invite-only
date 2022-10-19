@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :show, :create, :destroy]
   resources :comments, only: [:index, :show, :create, :update, :destroy]
 
+  get "/me", to: "users#show"
   get "/get_users/:id", to: "users#get_users"
   get "/group_posts/:id", to: "posts#group_posts"
   get "/user_posts/:id", to: "posts#user_posts"
   get "/group_comments/:id", to: "comments#group_comments"
-  # get "users/invitation/accept?invitation_token/:parameter"
+
 
   devise_scope :user do
     patch 'users/invitation/accept', to: 'users_invitations#update'
