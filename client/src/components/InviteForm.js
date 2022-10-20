@@ -2,11 +2,7 @@ import { useState } from "react";
 
 function InviteForm({ currentUser }) {
   const [email, setEmail] = useState("");
-
-  /// START FROM HERE ///
-  // call User.invite!(email: 'morty@ricknmortyforever1000years.com')
-  // to create a user, assign user an invite token,
-  // and set it up so the user can sign up via the email that they receive
+  const [error, setError] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -22,19 +18,16 @@ function InviteForm({ currentUser }) {
       //   },
       body: formData,
       //   JSON.stringify({ user: { email: email } })
-    })
-    .then((res) => {
+    }).then((res) => {
       if (res.ok) {
-        console.log("Invitation Sent")
-    //     res.json().then((data) => {
-    //       console.log("successful: ", data);
-        // });
+        alert("Invitation has been sent");
+        setError(null)
       } else {
-        res.json().then((err) => console.log("error: ", err.error));
+        res.json().then((err) => setError(err.error));
       }
     });
 
-    setEmail("")
+    setEmail("");
   }
 
   return (
@@ -51,6 +44,7 @@ function InviteForm({ currentUser }) {
         />
         <button>Send</button>
       </form>
+      {error ? <p>{error}</p> : null}
     </>
   );
 }

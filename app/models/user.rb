@@ -10,6 +10,7 @@ class User < ApplicationRecord
      
   has_many :comments
   has_many :posts, through: :comments
+
      
   attr_accessor :invitation_instructions
 

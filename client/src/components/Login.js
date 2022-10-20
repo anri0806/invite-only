@@ -26,10 +26,7 @@ function Login({ onLogin }) {
           onLogin(res.data);
         });
       } else {
-        res.json().then((res) => {
-          setError(res.status);
-          console.log(res);
-        });
+        setError("Incorrect username or password");
       }
     });
   }

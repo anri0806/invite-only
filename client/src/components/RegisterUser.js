@@ -35,7 +35,10 @@ function RegisterUser({ onLogin, currentGroup }) {
       if (res.ok) {
         res.json().then((currentUser) => onLogin(currentUser));
       } else {
-        res.json().then((err) => setErrors(err.errors));
+        res.json().then((err) => {
+          console.log(err.status.message);
+          setErrors(err.status.message);
+        });
       }
     });
 
@@ -78,9 +81,10 @@ function RegisterUser({ onLogin, currentGroup }) {
       </form>
       {errors ? (
         <>
-          {errors.map((err) => (
+        <p>{errors.replace(/[^,'\w\s]/g, '')}</p>
+          {/* {errors.map((err) => (
             <p key={err}>{err}</p>
-          ))}
+          ))} */}
         </>
       ) : null}
     </>

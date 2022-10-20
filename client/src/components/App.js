@@ -2,8 +2,7 @@ import "../App.css";
 import WelcomeContainer from "./WelcomeContainer";
 import HomeContainer from "./HomeContainer";
 import NavBar from "./NavBar";
-import InviteeSignup from "./InviteeSignUp";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -11,10 +10,8 @@ import { useState, useEffect } from "react";
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
-  // console.log(currentUser);
 
   const navigate = useNavigate();
-  // let { invitation_token } = useParams();
   let location = useLocation();
 
   useEffect(() => {
@@ -31,8 +28,6 @@ function App() {
     navigate("/");
   }
 
-  console.log(currentUser);
-
   function handleLogout() {
     setCurrentUser(null);
 
@@ -45,26 +40,19 @@ function App() {
       {currentUser ? (
         <HomeContainer currentUser={currentUser} />
       ) : (
-        <WelcomeContainer currentUser={currentUser} onLogin={handleLogin} />
+        <WelcomeContainer
+          currentUser={currentUser}
+          onLogin={handleLogin}
+          location={location}
+        />
       )}
-
-      <Routes>
+      {/* <Routes>
         <Route
           path="users/invitation/accept"
           element={<InviteeSignup onLogin={handleLogin} location={location} />}
         />
         <Route path="*" />
-        {/* <Route
-          path="*"
-          element={
-            <WebContainer
-              currentUser={currentUser}
-              onLogin={handleLogin}
-              onLogout={handleLogout}
-            />
-          }
-        /> */}
-      </Routes>
+      </Routes> */}
     </div>
   );
 }

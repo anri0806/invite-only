@@ -10,7 +10,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
 
   # absolute urls with routing url helpers.
-  # config.routes.default_url_options = { host: 'localhost', port: 3000 }
+  # Rails.application.routes.default_url_options = { host: 'localhost', port: 3000 }
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development

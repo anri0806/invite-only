@@ -13,6 +13,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     super
     session[:user_id] = @user.id
+    
   end
 
   # DELETE /resource/sign_out
@@ -30,17 +31,19 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-  if resource.valid?
+
+  # if resource.valid?
     render json: {
       status: {code: 200, message: 'Logged in successfully.'},
       data: UserSerializer.new(resource)
       # .serializable_hash[:data][:attributes]
     }, status: :ok
-  else
-    render json: {
-      status: {message: "Couldn't login successfully. #{resource.errors.full_messages.to_sentence}"}
-    }, status: :unauthorized
-  end
+  # else
+  #   render json: {
+  #     status: {message: "Couldn't login successfully. #{resource.errors.full_messages.to_sentence}"}
+  #   }, status: :unauthorized
+  # end
+
   end
 
   def respond_to_on_destroy

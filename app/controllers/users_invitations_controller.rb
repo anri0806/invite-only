@@ -9,7 +9,7 @@ class UsersInvitationsController < Devise::InvitationsController
         if new_user.valid?
            render json: new_user, status: :ok
         else 
-            render json: { error: "Error!!!"}, status: :unprocessable_entity
+            render json: { error: new_user.errors.full_messages}, status: :unprocessable_entity
         end
     end
 
@@ -19,36 +19,16 @@ class UsersInvitationsController < Devise::InvitationsController
         # new_user = User.find_by_invitation_token(params[:invitation_token], true)
 
         # update user data
-        new_user = User.accept_invitation!(invitation_token: params[:invitation_token], username: params[:user][:username], password: params[:user][:password], admin: params[:user][:admin])
+        new_user = User.accept_invitation!(invitation_token: params[:invitation_token], username: params[:user][:username], password: params[:user][:password], password_confirmation: params[:user][:password_confirmation], admin: params[:user][:admin])
 
         if new_user.valid?
-
-          # def create
-          #   self.resource = warden.authenticate!(auth_options)
-          #   set_flash_message!(:notice, :signed_in)
-          #   sign_in(resource_name, resource)
-          #   yield resource if block_given?
-          #   respond_with resource, location: after_sign_in_path_for(resource)
-          # end
-
-          ## ADD HERE
-          
-
           render json: new_user, status: :ok
         else
-          render json: {error: "Couldn't update user."}, status: :unprocessable_entity
+          render json: { errors: new_user.errors.full_messages }, status: :unprocessable_entity
         end
-       
-        # super do |resource|
-        #   if resource.errors.empty?
-        #     render json: { status: "Invitation Accepted!" }, status: 200 and return
-        #   else
-        #     render json: resource.errors, status: 401 and return
-        #   end
-        # end
       end
 
-          # def edit
+    # def edit
     #     sign_out send("current_#{resource_name}") if send("#{resource_name}_signed_in?")
     #     set_minimum_password_length
     #     resource.invitation_token = params[:invitation_token]

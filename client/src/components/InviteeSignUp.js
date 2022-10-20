@@ -30,11 +30,13 @@ function InviteeSignup({ onLogin, location }) {
     ).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          console.log("Successfully logged in.");
-            onLogin(user);
+          onLogin(user);
         });
       } else {
-        res.json().then((err) => setErrors(err.errors));
+        res.json().then((err) => {
+          console.log(err.errors)
+          setErrors(err.errors)
+        });
       }
     });
   }
