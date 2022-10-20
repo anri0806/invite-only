@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "./App";
 
-function InviteForm({ currentUser }) {
+function InviteForm() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
+
+  const currentUser = useContext(UserContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,7 +24,7 @@ function InviteForm({ currentUser }) {
     }).then((res) => {
       if (res.ok) {
         alert("Invitation has been sent");
-        setError(null)
+        setError(null);
       } else {
         res.json().then((err) => setError(err.error));
       }

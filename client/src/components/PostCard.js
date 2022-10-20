@@ -1,4 +1,3 @@
-
 import Post from "./Post";
 import ReadOnlyComment from "./ReadOnlyComment";
 
@@ -22,8 +21,8 @@ function PostCard({
         onClickDelete={onClickDelete}
       />
       <ReadOnlyComment
-        comments={comments}
         currentUser={currentUser}
+        comments={comments}
         postId={post.id}
         onSubmitAddCom={onSubmitAddCom}
         onDeleteComment={onDeleteComment}

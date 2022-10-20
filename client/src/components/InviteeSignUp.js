@@ -34,8 +34,7 @@ function InviteeSignup({ onLogin, location }) {
         });
       } else {
         res.json().then((err) => {
-          console.log(err.errors)
-          setErrors(err.errors)
+          setErrors(err.errors);
         });
       }
     });

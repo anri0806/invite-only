@@ -5,7 +5,7 @@ function FeedPage({ currentUser, posts, onSubmitAdd, onRenderFilteredPosts }) {
   return (
     <>
       <h2>This is Feed Page</h2>
-      <PostForm currentUser={currentUser} onSubmitAdd={onSubmitAdd} />
+      <PostForm onSubmitAdd={onSubmitAdd} />
       <PostContainer
         currentUser={currentUser}
         posts={posts}

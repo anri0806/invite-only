@@ -1,14 +1,19 @@
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "./App";
+
 import FeedPage from "./FeedPage";
 import UserProfilePage from "./UserProfilePage";
 import MemberList from "./MemberList";
 import Member from "./Member";
 import InviteUserPage from "./InviteUserPage";
 
-function HomeContainer({ currentUser }) {
+function HomeContainer() {
   const [posts, setPosts] = useState([]);
   const [selectedMember, setSelectedMember] = useState(null);
+
+  const currentUser = useContext(UserContext);
 
   function renderNewPost(newPost) {
     setPosts([newPost, ...posts]);
@@ -47,12 +52,7 @@ function HomeContainer({ currentUser }) {
         />
         <Route
           path="members"
-          element={
-            <MemberList
-              currentUser={currentUser}
-              onClickedMember={handleClickMember}
-            />
-          }
+          element={<MemberList onClickedMember={handleClickMember} />}
         />
         <Route
           path="/members/:userId"
@@ -64,10 +64,7 @@ function HomeContainer({ currentUser }) {
           }
         />
         {currentUser.admin ? (
-          <Route
-            path="invite"
-            element={<InviteUserPage currentUser={currentUser} />}
-          />
+          <Route path="invite" element={<InviteUserPage />} />
         ) : null}
       </Routes>
     </>

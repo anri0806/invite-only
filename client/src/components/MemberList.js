@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "./App";
 
-function MemberList({ currentUser, onClickedMember }) {
+
+function MemberList({ onClickedMember }) {
   const [members, setMembers] = useState([]);
+  
+  const currentUser = useContext(UserContext);
 
   useEffect(() => {
     fetch(`/get_users/${currentUser.group_id}`)

@@ -1,5 +1,5 @@
-
 import { useEffect, useState } from "react";
+
 import Profile from "./Profile";
 import PostHistory from "./PostHistory";
 

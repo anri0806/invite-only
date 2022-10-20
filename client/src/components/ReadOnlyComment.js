@@ -1,9 +1,10 @@
 import { useState } from "react";
+
 import EditComment from "./EditComment";
 
 function ReadOnlyComment({
-  comments,
   currentUser,
+  comments,
   postId,
   onSubmitAddCom,
   onDeleteComment,

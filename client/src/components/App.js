@@ -5,13 +5,15 @@ import NavBar from "./NavBar";
 import { useLocation } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
+
+export const UserContext = createContext();
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
-
   const navigate = useNavigate();
+
   let location = useLocation();
 
   useEffect(() => {
@@ -36,16 +38,14 @@ function App() {
 
   return (
     <div>
-      <NavBar currentUser={currentUser} onLogout={handleLogout} />
-      {currentUser ? (
-        <HomeContainer currentUser={currentUser} />
-      ) : (
-        <WelcomeContainer
-          currentUser={currentUser}
-          onLogin={handleLogin}
-          location={location}
-        />
-      )}
+      <UserContext.Provider value={currentUser}>
+        <NavBar onLogout={handleLogout} />
+        {currentUser ? (
+          <HomeContainer />
+        ) : (
+          <WelcomeContainer onLogin={handleLogin} location={location} />
+        )}
+      </UserContext.Provider>
       {/* <Routes>
         <Route
           path="users/invitation/accept"

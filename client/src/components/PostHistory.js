@@ -1,4 +1,3 @@
-
 import PostContainer from "./PostContainer";
 
 function PostHistory({ currentUser, userPosts, onRenderFilteredPosts }) {

@@ -1,9 +1,14 @@
 import { useState, useRef } from "react";
+import { useContext } from "react";
+import { UserContext } from "./App";
 
-function PostForm({ currentUser, onSubmitAdd }) {
+
+function PostForm({ onSubmitAdd }) {
   const [caption, setCaption] = useState("");
   const [picture, setPicture] = useState(null);
   const [errors, setErrors] = useState([]);
+
+  const currentUser = useContext(UserContext);
 
   const ref = useRef();
 

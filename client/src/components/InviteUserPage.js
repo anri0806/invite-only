@@ -1,9 +1,9 @@
 import InviteForm from "./InviteForm";
 
-function InviteUserPage({ currentUser }) {
+function InviteUserPage() {
   return (
     <>
-      <InviteForm currentUser={currentUser} />
+      <InviteForm />
     </>
   );
 }
