@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
 function RegisterUser({ onLogin, currentGroup }) {
   const [formData, setFormData] = useState({
     username: "",
@@ -26,7 +29,7 @@ function RegisterUser({ onLogin, currentGroup }) {
           username: formData.username,
           email: formData.email,
           password: formData.password,
-          // password_confirmation: passwordConfirm,
+          password_confirmation: passwordConfirm,
           group_id: currentGroup.id,
           admin: true,
         },
@@ -47,47 +50,65 @@ function RegisterUser({ onLogin, currentGroup }) {
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={formData.username}
-          onChange={handleChange}
-          type="text"
-          name="username"
-          placeholder="Type username"
-        />
-        <input
-          value={formData.email}
-          onChange={handleChange}
-          type="email"
-          name="email"
-          placeholder="Type email"
-        />
-        <input
-          value={formData.password}
-          onChange={handleChange}
-          type="password"
-          name="password"
-          placeholder="Type password"
-        />
-        <input
-          value={passwordConfirm}
-          onChange={(e) => setPasswordConfirm(e.target.value)}
-          type="password"
-          name="password_confirmation"
-          placeholder="Confirm password"
-        />
-        <button>Create account</button>
-      </form>
+    <div className="register-box">
+      <h5>Step 2. Create your account </h5>
+      <p style={{ fontSize: "14px" }}>
+        *You can start inviting people after creating your account
+      </p>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="formBasicUsername">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            value={formData.username}
+            onChange={handleChange}
+            type="text"
+            name="username"
+            placeholder="Type username"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            value={formData.email}
+            onChange={handleChange}
+            type="email"
+            name="email"
+            placeholder="Type email"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            value={formData.password}
+            onChange={handleChange}
+            type="password"
+            name="password"
+            placeholder="Type password"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPasswordConfirmation">
+          <Form.Label>Confirm password</Form.Label>
+          <Form.Control
+            value={passwordConfirm}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
+            type="password"
+            name="password_confirmation"
+            placeholder="Confirm password"
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Create account
+        </Button>
+      </Form>
       {errors ? (
         <>
-        <p>{errors.replace(/[^,'\w\s]/g, '')}</p>
+          <p className="error">{errors.replace(/[^,'\w\s]/g, "")}</p>
           {/* {errors.map((err) => (
             <p key={err}>{err}</p>
           ))} */}
         </>
       ) : null}
-    </>
+    </div>
   );
 }
 

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import RegisterUser from "./RegisterUser";
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
 function Register({ onLogin }) {
   const [groupName, setGroupName] = useState("");
   const [currentGroup, setCurrentGroup] = useState("");
   const [createdGroup, setCreatedGroup] = useState(false);
   const [error, setError] = useState(null);
-
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,30 +34,34 @@ function Register({ onLogin }) {
   }
 
   return (
-    <>
+    <div className="register">
       {createdGroup ? (
         <RegisterUser onLogin={onLogin} currentGroup={currentGroup} />
       ) : (
-        <>
-          <h4>Register page</h4>
-          <p>step 1.</p>
-          <p>Create group</p>
-          <form onSubmit={handleSubmit}>
-            <label>Group name</label>
-            <input
-              value={groupName}
-              onChange={(e) => setGroupName(e.target.value)}
-              type="text"
-              name="groupName"
-              placeholder="Type group name"
-            />
-            <br />
-            <button>next</button>
-          </form>
-          {error ? <p>{error}</p> : null}
-        </>
+        <div className="register-box">
+          <h3>Register</h3>
+          <br />
+          <h5>Step 1. Create group</h5>
+          <br />
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Group name</Form.Label>
+              <Form.Control
+                value={groupName}
+                onChange={(e) => setGroupName(e.target.value)}
+                type="text"
+                name="groupName"
+                placeholder="Type group name"
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              next
+            </Button>
+          </Form>
+          {error ? <p className="error">{error}</p> : null}
+        </div>
       )}
-    </>
+    </div>
   );
 }
 

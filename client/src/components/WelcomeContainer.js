@@ -8,7 +8,7 @@ function WelcomeContainer({ onLogin, location }) {
 
 
   return (
-    <div>
+    <div className="bcg">
       <Routes>
         <Route path="/" element={<Login onLogin={onLogin} />} />
         <Route path="register" element={<Register onLogin={onLogin} />} />

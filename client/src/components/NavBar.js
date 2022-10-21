@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "./App";
+import logo from "../Images/logo1.jpg";
 
 function NavBar({ onLogout }) {
   const currentUser = useContext(UserContext);
@@ -27,8 +28,10 @@ function NavBar({ onLogout }) {
         </>
       ) : (
         <>
-          {" "}
-          <Link to="/">Home</Link> | <Link to="register">Register</Link>
+          <Link to="/">
+            <img src={logo} alt="logo" width="85px" />
+          </Link>
+          {/* | <Link to="register">Register</Link> */}
         </>
       )}
     </>

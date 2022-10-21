@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 function Login({ onLogin }) {
   const [formData, setFormData] = useState({
@@ -32,29 +36,45 @@ function Login({ onLogin }) {
   }
 
   return (
-    <>
-      <p>Login Page</p>
-      <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          value={formData.email}
-          onChange={handleChange}
-          type="email"
-          name="email"
-          placeholder="Type email"
-        />
-        <label>Password</label>
-        <input
-          value={formData.password}
-          onChange={handleChange}
-          type="text"
-          name="password"
-          placeholder="Type password"
-        />
-        <button>Login</button>
-      </form>
-      {error ? <p>{error}</p> : null}
-    </>
+    <div id="login-page">
+      <div id="login-title">
+        <h1>
+          <b>INVITE ONLY</b>
+        </h1>
+        <h4>Private social media for family and friends.</h4>
+      </div>
+      <div id="login-box">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              value={formData.email}
+              onChange={handleChange}
+              type="email"
+              name="email"
+              placeholder="Type email"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              value={formData.password}
+              onChange={handleChange}
+              type="password"
+              name="password"
+              placeholder="Type password"
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Login
+          </Button>
+        </Form>
+        {error ? <p className="error">{error}</p> : null}
+        <p>
+          Don't have an account? <Link to="register">Register</Link>
+        </p>
+      </div>
+    </div>
   );
 }
 

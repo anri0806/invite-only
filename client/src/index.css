@@ -1,13 +1,95 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif; */
+  font-family: "Oxygen", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.app {
+  font-family: "Oxygen", sans-serif;
+}
+
+/***** BACKGROUND IMAGE *****/
+
+.wrap {
+  position: relative;
+}
+
+.wrap::before {
+  content: " ";
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* opacity: 0.6; */
+  /* filter: grayscale(10%); */
+  background-image: url("./Images/Background1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.content {
+  position: relative;
+}
+
+/***************************/
+
+.bcg {
+  background-image: url("./Images/Background2.jpg");
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.error {
+  color: red;
+  margin: 15px 0 0 0;
+}
+
+#logo {
+  margin: 8px;
+}
+
+#login-page {
+  margin: 3% 0 0 15%;
+}
+
+#login-page h1 {
+  font-size: 65px;
+}
+
+#login-page #login-title {
+  margin-bottom: 80px;
+}
+
+#login-page p {
+  margin-top: 20px;
+}
+
+#login-box {
+  background-color: rgba(246, 244, 242, 0.851);
+  width: 33%;
+  padding: 40px 40px 20px 40px;
+}
+
+.register {
+  margin: 3% 0 0 15%;
+}
+
+.register-box {
+  background-color: rgba(246, 244, 242, 0.851);
+  width: 50%;
+  padding: 40px 40px 20px 40px;
 }

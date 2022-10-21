@@ -37,7 +37,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app">
       <UserContext.Provider value={currentUser}>
         <NavBar onLogout={handleLogout} />
         {currentUser ? (
