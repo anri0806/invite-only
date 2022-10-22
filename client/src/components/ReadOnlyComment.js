@@ -17,10 +17,7 @@ function ReadOnlyComment({
   const filteredComment = comments
     .filter((com) => com.post_id === postId)
     .map((com) => (
-      <div
-        key={com.id}
-        style={{ fontSize: "13px", backgroundColor: "#DEDEDE" }}
-      >
+      <div key={com.id} className="comment-card">
         {editCommentId === com.id ? (
           <EditComment
             com={com}
@@ -28,8 +25,10 @@ function ReadOnlyComment({
             onSubmitHideEdit={handleHideEdit}
           />
         ) : (
-          <>
-            <p>{com.posted_by}</p>
+          <div className="comment">
+            <p>
+              <b>{com.posted_by}</b>
+            </p>
             <p>{com.content}</p>
             {com.user_id === currentUser.id ? (
               <>
@@ -37,7 +36,7 @@ function ReadOnlyComment({
                 <button onClick={() => handleDeleteCom(com.id)}>🗑️</button>
               </>
             ) : null}
-          </>
+          </div>
         )}
       </div>
     ));

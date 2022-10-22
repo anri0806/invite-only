@@ -2,6 +2,10 @@ import { useState, useRef } from "react";
 import { useContext } from "react";
 import { UserContext } from "./App";
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 function PostForm({ onSubmitAdd }) {
   const [caption, setCaption] = useState("");
@@ -17,7 +21,7 @@ function PostForm({ onSubmitAdd }) {
 
     const formData = new FormData();
     formData.append("user_id", currentUser.id);
-    formData.append("group_id", currentUser.group_id)
+    formData.append("group_id", currentUser.group_id);
     formData.append("caption", caption);
     if (picture) formData.append("picture", picture);
 
@@ -27,7 +31,7 @@ function PostForm({ onSubmitAdd }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((newPost) => {
-          onSubmitAdd(newPost)
+          onSubmitAdd(newPost);
           // console.log(newPost)
         });
       } else {
@@ -38,38 +42,52 @@ function PostForm({ onSubmitAdd }) {
     setCaption("");
     ref.current.value = "";
     setPicture(null);
-    setErrors([])
+    setErrors([]);
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input
-          value={caption}
-          onChange={(e) => setCaption(e.target.value)}
-          type="text"
-          name="caption"
-          placeholder="Type caption"
-        />
-        <br />
-        <input
-          onChange={(e) => setPicture(e.target.files[0])}
-          ref={ref}
-          type="file"
-          name="picture"
-          placeholder="Add picture"
-        />
-        <br />
-        <button>Post</button>
-      </form>
+    <div className="feed-form-box">
+      <Form onSubmit={handleSubmit} id="form">
+        <Row>
+          <Col xs={6}>
+            <Form.Group className="mb-3" controlId="formBasicCaption">
+              <Form.Control
+                value={caption}
+                onChange={(e) => setCaption(e.target.value)}
+                type="text"
+                name="caption"
+                placeholder="What's in your mind?"
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3" controlId="formBasicPicture">
+              <Form.Control
+                onChange={(e) => setPicture(e.target.files[0])}
+                ref={ref}
+                type="file"
+                name="picture"
+                placeholder="Add picture"
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Button variant="primary" type="submit">
+              Post
+            </Button>
+          </Col>
+        </Row>
+      </Form>
       {errors ? (
         <>
           {errors.map((err) => (
-            <p key={err}>{err}</p>
+            <p key={err} className="error">
+              {err}
+            </p>
           ))}
         </>
       ) : null}
-    </>
+    </div>
   );
 }
 

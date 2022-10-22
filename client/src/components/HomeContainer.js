@@ -28,7 +28,7 @@ function HomeContainer() {
   }
 
   return (
-    <>
+    <div className="home-container">
       <Routes>
         <Route
           path="/"
@@ -67,7 +67,7 @@ function HomeContainer() {
           <Route path="invite" element={<InviteUserPage />} />
         ) : null}
       </Routes>
-    </>
+    </div>
   );
 }
 

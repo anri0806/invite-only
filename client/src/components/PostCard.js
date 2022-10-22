@@ -1,6 +1,7 @@
 import Post from "./Post";
 import ReadOnlyComment from "./ReadOnlyComment";
 
+
 function PostCard({
   currentUser,
   posts,
@@ -11,10 +12,7 @@ function PostCard({
   onEditComment,
 }) {
   const postCards = posts.map((post) => (
-    <div
-      key={post.id}
-      style={{ border: "2px solid black", margin: "5px", padding: "3px" }}
-    >
+    <div className="post-card" key={post.id}>
       <Post
         post={post}
         currentUser={currentUser}
