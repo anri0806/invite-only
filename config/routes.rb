@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/group_posts/:id", to: "posts#group_posts"
   get "/user_posts/:id", to: "posts#user_posts"
   get "/group_comments/:id", to: "comments#group_comments"
+  get "/get_group/:token", to: "groups#get_group"
 
 
   devise_scope :user do

@@ -15,7 +15,6 @@ function UserProfilePage({ currentUser, onRenderFilteredPosts }) {
   return (
     <>
       <Profile currentUser={currentUser} />
-      <br />
       <PostHistory
         currentUser={currentUser}
         userPosts={userPosts}

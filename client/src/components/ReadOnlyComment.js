@@ -1,6 +1,12 @@
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import EditComment from "./EditComment";
+
+var moment = require("moment");
 
 function ReadOnlyComment({
   currentUser,
@@ -14,6 +20,11 @@ function ReadOnlyComment({
   const [editCommentId, setEditCommentId] = useState(null);
   const [error, setError] = useState(null);
 
+  const current = new Date();
+  const date = `${current.getFullYear()}-${
+    current.getMonth() + 1
+  }-${current.getDate()}`;
+
   const filteredComment = comments
     .filter((com) => com.post_id === postId)
     .map((com) => (
@@ -26,16 +37,37 @@ function ReadOnlyComment({
           />
         ) : (
           <div className="comment">
-            <p>
-              <b>{com.posted_by}</b>
-            </p>
-            <p>{com.content}</p>
+            <div id="comment-title">
+              <p>
+                <b>{com.posted_by}</b>
+              </p>
+            </div>
             {com.user_id === currentUser.id ? (
               <>
-                <button onClick={() => setEditCommentId(com.id)}>✏️</button>
-                <button onClick={() => handleDeleteCom(com.id)}>🗑️</button>
+                <span
+                  onClick={() => handleDeleteCom(com.id)}
+                  className="material-symbols-outlined"
+                >
+                  delete
+                </span>
+                <span
+                  onClick={() => setEditCommentId(com.id)}
+                  className="material-symbols-outlined"
+                >
+                  edit
+                </span>
               </>
             ) : null}
+
+            {com.created_at.slice(0, 10) === date ? (
+              <p style={{ fontSize: "12px" }}>
+                {moment.parseZone(com.created_at).startOf("day").fromNow()}
+              </p>
+            ) : (
+              <p style={{ fontSize: "12px" }}>{com.created_at.slice(0, 10)}</p>
+            )}
+
+            <p style={{ marginTop: "4px" }}>{com.content}</p>
           </div>
         )}
       </div>
@@ -84,17 +116,28 @@ function ReadOnlyComment({
     <>
       {filteredComment}
       <br />
-      <form onSubmit={handleAddComment}>
-        <input
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          name="content"
-          type="text"
-          placeholder="Add comment..."
-        />
-        <button>Add</button>
-      </form>
-      {error ? <p>{error}</p> : null}
+      <Form onSubmit={handleAddComment}>
+        <Row>
+          <Col xs={11}>
+            <Form.Group className="mb-3" controlId="formBasicCaption">
+              <Form.Control
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                name="content"
+                type="text"
+                placeholder="Add comment..."
+                size="sm"
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Button variant="outline-secondary" size="sm" type="submit">
+              Add
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+      {error ? <p className="error">{error}</p> : null}
     </>
   );
 }

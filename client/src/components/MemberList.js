@@ -3,10 +3,9 @@ import { Link, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "./App";
 
-
 function MemberList({ onClickedMember }) {
   const [members, setMembers] = useState([]);
-  
+
   const currentUser = useContext(UserContext);
 
   useEffect(() => {
@@ -20,12 +19,13 @@ function MemberList({ onClickedMember }) {
   }
 
   return (
-    <>
-      <h4>member list</h4>
+    <div className="member-list">
+      <h4>Members</h4>
+      <br />
       {members
         .filter((member) => member.id !== currentUser.id)
         .map((member) => (
-          <div key={member.id}>
+          <div key={member.id} className="member-card">
             <Link
               to={`/members/${member.id}`}
               onClick={() => handleClick(member)}
@@ -36,7 +36,7 @@ function MemberList({ onClickedMember }) {
         ))}
 
       <Outlet />
-    </>
+    </div>
   );
 }
 

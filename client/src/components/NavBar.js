@@ -26,7 +26,7 @@ function NavBar({ onLogout }) {
       className="navBar"
       style={{ margin: "0", padding: "0" }}
     >
-      <Container style={{ margin: "0", padding: "0" }}>
+      <Container style={{ marginLeft: "0", marginRight: "0", padding: "0" }}>
         {currentUser ? (
           <>
             <Navbar.Brand href="/" style={{ margin: "0", padding: "0" }}>
@@ -52,6 +52,11 @@ function NavBar({ onLogout }) {
             <Nav.Link onClick={handleClick} className="navBar-link">
               Logout
             </Nav.Link>
+            {/* <Navbar.Brand href="feed" id="navBar-family"> */}
+            <div id="navBar-family">
+              <b>{currentUser.group_name}</b>
+            </div>
+            {/* </Navbar.Brand> */}
           </>
         ) : (
           <>

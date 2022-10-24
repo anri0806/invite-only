@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 function InviteeSignup({ onLogin, location }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmationPassword, setConfirmationPassword] = useState("");
   const [errors, setErrors] = useState(null);
+  const [group, setGroup] = useState("");
 
-  //   console.log(location.search.slice(18));
+  useEffect(() => {
+    fetch(`/get_group/${location.search.slice(18)}`)
+      .then((res) => res.json())
+      .then((group) => setGroup(group.group_name));
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,46 +51,61 @@ function InviteeSignup({ onLogin, location }) {
   }
 
   return (
-    <>
-      <p>Please set your username and password to sign up.</p>
-      <form onSubmit={handleSubmit}>
-        <label>Username: </label>
-        <input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          type="text"
-          name="username"
-          placeholder="type username"
-        />
-        <br />
-        <label>Password: </label>
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          name="password"
-          placeholder="type password"
-        />
-        <br />
-        <label>Confirm Password: </label>
-        <input
-          value={confirmationPassword}
-          onChange={(e) => setConfirmationPassword(e.target.value)}
-          type="password"
-          name="confirmation_password"
-          placeholder="type confirmation password"
-        />
-        <br />
-        <button>Sign up</button>
-      </form>
+    <div className="invitee-signup">
+      <h4>Sign up to join {group}</h4>
+      <br />
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Control
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              type="text"
+              name="username"
+              placeholder="Enter username"
+            />
+          </Form.Group>
+          <Col>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Control
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                name="password"
+                placeholder="Enter password"
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group
+              className="mb-3"
+              controlId="formBasicPasswordConfirmation"
+            >
+              <Form.Control
+                value={confirmationPassword}
+                onChange={(e) => setConfirmationPassword(e.target.value)}
+                type="password"
+                name="confirmation_password"
+                placeholder="Confirm password"
+              />
+            </Form.Group>
+          </Col>
+        </Row>
+        <Button variant="primary" type="submit">
+          Join
+        </Button>
+      </Form>
+      <br />
       {errors ? (
         <>
           {errors.map((err) => (
-            <p key={err}>{err}</p>
+            <p key={err} className="error">
+              {err}
+            </p>
           ))}
         </>
       ) : null}
-    </>
+    </div>
   );
 }
 

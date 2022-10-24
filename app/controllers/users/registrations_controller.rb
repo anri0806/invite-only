@@ -11,16 +11,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # def create
-  #   byebug
-  # end
-
   #params[:user]
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    session[:user_id] = @user.id
+  end
 
   # GET /resource/edit
   # def edit

@@ -7,10 +7,11 @@ class GroupsController < ApplicationController
         render json: groups
     end
 
-    # def get_group
-    #     group = Group.find_by(id: params[:id])
-    #     render json: group, status: :ok
-    # end
+    def get_group
+        current_user = User.find_by_invitation_token(params[:token], true)
+        group = Group.find_by(id: current_user.group_id)
+        render json: group, status: :ok
+    end
 
     def show
         group = Group.find_by(id: params[:id])

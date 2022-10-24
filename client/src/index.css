@@ -50,7 +50,10 @@ code {
   height: 100%;
   position: fixed;
   left: 0;
-  top: 0;
+  top: 5%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .error {
@@ -71,8 +74,15 @@ code {
   color: white;
 }
 
+.navBar #navBar-family {
+  color: white;
+  font-size: 22px;
+  margin-left: 20%;
+  margin-right: 0;
+}
+
 #login-page {
-  margin: 9% 0 0 15%;
+  margin: 8% 0 0 17%;
 }
 
 #login-page h1 {
@@ -94,13 +104,22 @@ code {
 }
 
 .register {
-  margin: 8% 0 0 15%;
+  margin: 4% 0 0 15%;
+}
+
+.register .register-titles {
+  width: 55%;
+}
+
+.register-titles h4 {
+  color: #0080ff;
 }
 
 .register-box {
   background-color: rgba(246, 244, 242, 0.851);
   width: 50%;
-  padding: 40px 40px 40px 40px;
+  padding: 30px;
+  margin-top: 2%;
 }
 
 .home-container {
@@ -111,19 +130,20 @@ code {
 
 .feed-form-box {
   background-color: white;
-  border-radius: 20px;
+  border-radius: 12px;
 }
 
 .feed-form-box #form {
-  margin: 0 0 0 14%;
-  padding: 15px 0 0 0;
+  /* margin: ; */
+  padding: 15px 17px 5px 17px;
 }
 
 .post-card {
   background-color: white;
-  border-radius: 20px;
-  margin: 10px auto;
+  border-radius: 12px;
+  margin: 12px auto;
   padding: 20px;
+  font-size: 17px;
   /* width: 80%; */
 }
 
@@ -138,11 +158,12 @@ code {
 
 .post span {
   float: right;
+  cursor: pointer;
 }
 
 .comment-card {
-  background-color: #F0F0F0;
-  font-size: 13px;
+  background-color: #f0f0f0;
+  font-size: 15px;
   border-radius: 20px;
   padding: 12px;
   margin: 5px auto;
@@ -150,4 +171,88 @@ code {
 
 .comment-card p {
   margin: 0;
+}
+
+.comment #comment-title {
+  display: inline-block;
+}
+
+.comment span {
+  float: right;
+  cursor: pointer;
+  font-size: 19px;
+  margin-left: 5px;
+}
+
+.edit-comment span {
+  float: right;
+  cursor: pointer;
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.edit-comment-form {
+  margin: 0 auto;
+}
+
+.profile {
+  background-color: white;
+  border-radius: 20px;
+  margin: 8px auto;
+  padding: 20px;
+  /* font-size: 17px; */
+}
+
+.profile p {
+  margin: 0;
+}
+
+.post-history {
+  margin-top: 20px;
+}
+
+.member-list {
+  background-color: white;
+  border-radius: 12px;
+  margin: 12px auto;
+  padding: 20px;
+  width: 70%;
+  height: 84%;
+  left: 15%;
+  top: 11%;
+  position: fixed;
+}
+
+.member-list .member-card {
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  margin-left: 6px;
+  margin-top: 2px;
+  padding: 7px;
+  width: 49%;
+  display: inline-block;
+}
+
+.invite-page {
+  background-color: white;
+  border-radius: 12px;
+  margin: 12px auto;
+  padding: 30px;
+  width: 70%;
+  height: 84%;
+  left: 15%;
+  top: 11%;
+  position: fixed;
+}
+
+/* Fix background */
+.invitee-signup {
+  background-color: rgba(246, 244, 242, 0.851);
+  /* border-radius: 12px; */
+  padding: 40px;
+  width: 37%;
+  height: 84%;
+  left: 17%;
+  top: 12%;
+  position: fixed;
 }

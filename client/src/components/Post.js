@@ -1,7 +1,14 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+var moment = require("moment");
+
 function Post({ currentUser, post, onClickDelete }) {
+  const current = new Date();
+  const date = `${current.getFullYear()}-${
+    current.getMonth() + 1
+  }-${current.getDate()}`;
+
   function handleClick() {
     fetch(`/posts/${post.id}`, {
       method: "DELETE",
@@ -19,13 +26,21 @@ function Post({ currentUser, post, onClickDelete }) {
           <Card.Title>{post.posted_by}</Card.Title>
         </div>
         {post.user_id === currentUser.id ? (
-          <span onClick={handleClick} class="material-symbols-outlined">
+          <span onClick={handleClick} className="material-symbols-outlined">
             delete
           </span>
         ) : null}
-        <Card.Text style={{ fontSize: "12px" }}>
-          {post.created_at.slice(0, 10)}
-        </Card.Text>
+
+        {post.created_at.slice(0, 10) === date ? (
+          <Card.Text style={{ fontSize: "12px" }}>
+            {moment.parseZone(post.created_at).startOf("day").fromNow()}
+          </Card.Text>
+        ) : (
+          <Card.Text style={{ fontSize: "12px" }}>
+            {post.created_at.slice(0, 10)}
+          </Card.Text>
+        )}
+
         <Card.Text>{post.caption}</Card.Text>
         {post.picture === null ? null : (
           <img src={post.picture} width="100%" alt="" />

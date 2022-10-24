@@ -1,5 +1,10 @@
 import { useState } from "react";
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+
 function EditComment({ com, onEditComment, onSubmitHideEdit }) {
   const [comment, setComment] = useState(com.content);
   const [error, setError] = useState(null);
@@ -26,18 +31,37 @@ function EditComment({ com, onEditComment, onSubmitHideEdit }) {
   }
 
   return (
-    <>
-      <form onSubmit={handleEditComment}>
-        <input
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          type="text"
-          name="content"
-        />
-        <button>Update</button>
-      </form>
-      {error ? <p>{error}</p> : null}
-    </>
+    <div className="edit-comment">
+      <span
+        className="material-symbols-outlined"
+        onClick={() => onSubmitHideEdit()}
+      >
+        close
+      </span>
+      <div className="edit-comment-form">
+        <Form onSubmit={handleEditComment}>
+          <Row>
+            <Col xs={10}>
+              <Form.Group  controlId="formBasicCaption">
+                <Form.Control
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                  type="text"
+                  name="content"
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Button variant="outline-secondary" type="submit">
+                Update
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+
+        {error ? <p>{error}</p> : null}
+      </div>
+    </div>
   );
 }
 

@@ -17,6 +17,9 @@ u2 = User.create(username: "Dylan", email: "dylan@gmail.com", password: "abcdefg
 u3 = User.create(username: "Tiffany", email: "tiffany@gmail.com", password: "111111111", admin: true, group_id: g2.id)
 u4 = User.create(username: "Sarah", email: "sarah@gmail.com", password: "222222222", admin: false, group_id: g2.id)
 u5 = User.create(username: "Emma", email: "emma@gmail.com", password: "333333333", admin: false, group_id: g1.id)
+u6 = User.create(username: "Susan", email: "susan@gmail.com", password: "444444444", admin: false, group_id: g1.id)
+u7 = User.create(username: "David", email: "david@gmail.com", password: "555555555", admin: false, group_id: g1.id)
+
 
 p1 = Post.create(caption: "Hello Brooks Family!", created_at: "2022-9-13 9:00AM", user_id: u1.id, group_id: g1.id )
 p2 = Post.create(caption: "Post anything related to our team here. (i.e. practice schedule, pictures, etc.)", created_at: "2022-9-16 12:00PM", user_id: u3.id, group_id: g2.id )

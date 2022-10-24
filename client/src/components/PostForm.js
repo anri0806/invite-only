@@ -49,18 +49,18 @@ function PostForm({ onSubmitAdd }) {
     <div className="feed-form-box">
       <Form onSubmit={handleSubmit} id="form">
         <Row>
-          <Col xs={6}>
+          <Col xs={7}>
             <Form.Group className="mb-3" controlId="formBasicCaption">
               <Form.Control
                 value={caption}
                 onChange={(e) => setCaption(e.target.value)}
                 type="text"
                 name="caption"
-                placeholder="What's in your mind?"
+                placeholder="What's on your mind?"
               />
             </Form.Group>
           </Col>
-          <Col>
+          <Col xs={4}>
             <Form.Group className="mb-3" controlId="formBasicPicture">
               <Form.Control
                 onChange={(e) => setPicture(e.target.files[0])}

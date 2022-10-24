@@ -36,10 +36,11 @@ function RegisterUser({ onLogin, currentGroup }) {
       }),
     }).then((res) => {
       if (res.ok) {
-        res.json().then((currentUser) => onLogin(currentUser));
+        res.json().then((res) => {
+          onLogin(res.data);
+        });
       } else {
         res.json().then((err) => {
-          console.log(err.status.message);
           setErrors(err.status.message);
         });
       }
@@ -51,13 +52,13 @@ function RegisterUser({ onLogin, currentGroup }) {
 
   return (
     <div className="register-box">
-      <h5>Step 2. Create your account </h5>
+      <h5>Step 2. Create account </h5>
       <p style={{ fontSize: "14px" }}>
         *You can start inviting people after creating your account
       </p>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicUsername">
-          <Form.Label>Username</Form.Label>
+          {/* <Form.Label>Username</Form.Label> */}
           <Form.Control
             value={formData.username}
             onChange={handleChange}
@@ -67,7 +68,7 @@ function RegisterUser({ onLogin, currentGroup }) {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email</Form.Label>
+          {/* <Form.Label>Email</Form.Label> */}
           <Form.Control
             value={formData.email}
             onChange={handleChange}
@@ -77,7 +78,7 @@ function RegisterUser({ onLogin, currentGroup }) {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          {/* <Form.Label>Password</Form.Label> */}
           <Form.Control
             value={formData.password}
             onChange={handleChange}
@@ -87,7 +88,7 @@ function RegisterUser({ onLogin, currentGroup }) {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPasswordConfirmation">
-          <Form.Label>Confirm password</Form.Label>
+          {/* <Form.Label>Confirm password</Form.Label> */}
           <Form.Control
             value={passwordConfirm}
             onChange={(e) => setPasswordConfirm(e.target.value)}
@@ -103,9 +104,6 @@ function RegisterUser({ onLogin, currentGroup }) {
       {errors ? (
         <>
           <p className="error">{errors.replace(/[^,'\w\s]/g, "")}</p>
-          {/* {errors.map((err) => (
-            <p key={err}>{err}</p>
-          ))} */}
         </>
       ) : null}
     </div>

@@ -1,9 +1,16 @@
 import { useState, useContext } from "react";
 import { UserContext } from "./App";
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Alert from "react-bootstrap/Alert";
+
 function InviteForm() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
 
   const currentUser = useContext(UserContext);
 
@@ -23,7 +30,7 @@ function InviteForm() {
       //   JSON.stringify({ user: { email: email } })
     }).then((res) => {
       if (res.ok) {
-        alert("Invitation has been sent");
+        setShowAlert((showAlert) => !showAlert);
         setError(null);
       } else {
         res.json().then((err) => setError(err.error));
@@ -35,19 +42,33 @@ function InviteForm() {
 
   return (
     <>
-      <h3>Send an invitation</h3>
-      <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <br />
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          name="email"
-        />
-        <button>Send</button>
-      </form>
-      {error ? <p>{error}</p> : null}
+      {showAlert ? (
+        <Alert variant="success">Invitation has been sent!</Alert>
+      ) : null}
+      <h4>Send an invitation</h4>
+      <br />
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col xs={8}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              {/* <Form.Label>Email</Form.Label> */}
+              <Form.Control
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                name="email"
+                placeholder="Enter email"
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Button variant="outline-secondary" type="submit">
+              Send
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+      {error ? <p className="error">{error}</p> : null}
     </>
   );
 }

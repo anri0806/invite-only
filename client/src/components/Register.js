@@ -35,6 +35,21 @@ function Register({ onLogin }) {
 
   return (
     <div className="register">
+      <div className="register-titles">
+        <h5>
+          <b>INVITE ONLY</b> gives you a private space to share photos and memories
+          with the people you choose, away from social media. Make your own
+          group and share memories!
+        </h5>
+        <br />
+        <h4>Private Feeds</h4>
+        <p>Only invited members can see</p>
+        <h4>For anyone and anything</h4>
+        <p>
+          From close friends to extended family or for any occasions like
+          trips, weddings and more!
+        </p>
+      </div>
       {createdGroup ? (
         <RegisterUser onLogin={onLogin} currentGroup={currentGroup} />
       ) : (
