@@ -1,7 +1,7 @@
 databases:
   - name: invite-only-app
-    databaseName: invite-only-app
-    user: invite-only-app
+    databaseName: react_rails_api_project_template_production1
+    user: react_rails_api_project_template1
 
 services:
   - type: web
