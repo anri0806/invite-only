@@ -24,14 +24,11 @@ Rails.application.routes.draw do
     sign_out: 'logout',
     registration: 'signup',
     invitation: 'users/invitation',
-    # users_invitations: 'users/invitation/accept'
   },
   controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     invitations: 'users_invitations',
-    # invitations: 'devise/invitations'
-    # users_invitations: 'users_invitations'
   }
 
 
