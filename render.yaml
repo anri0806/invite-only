@@ -1,8 +1,8 @@
 databases:
   - name: invite-only
     plan: free
-    databaseName: react_rails_api_project_template_production1
-    user: react_rails_api_project_template1
+    databaseName: invite-only
+    user: invite-only
 
 services:
   - type: web
