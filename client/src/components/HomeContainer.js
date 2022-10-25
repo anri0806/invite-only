@@ -9,9 +9,9 @@ import MemberList from "./MemberList";
 import Member from "./Member";
 import InviteUserPage from "./InviteUserPage";
 
-function HomeContainer() {
+function HomeContainer({ onEditUpdate, onEditUpdateAvatar }) {
   const [posts, setPosts] = useState([]);
-  const [selectedMember, setSelectedMember] = useState(null);
+  // const [selectedMember, setSelectedMember] = useState(null);
 
   const currentUser = useContext(UserContext);
 
@@ -23,9 +23,17 @@ function HomeContainer() {
     setPosts(filteredPosts);
   }
 
-  function handleClickMember(member) {
-    setSelectedMember(member);
+  function handleEditPost(updatedItem) {
+    const updatedPosts = posts.map((post) =>
+      post.id === updatedItem.id ? updatedItem : post
+    );
+
+    setPosts(updatedPosts);
   }
+
+  // function handleClickMember(member) {
+  //   setSelectedMember(member);
+  // }
 
   return (
     <div className="home-container">
@@ -38,6 +46,7 @@ function HomeContainer() {
               posts={posts}
               onSubmitAdd={renderNewPost}
               onRenderFilteredPosts={renderFilteredPosts}
+              onEditPost={handleEditPost}
             />
           }
         />
@@ -47,14 +56,22 @@ function HomeContainer() {
             <UserProfilePage
               currentUser={currentUser}
               onRenderFilteredPosts={renderFilteredPosts}
+              onEditUpdate={onEditUpdate}
+              onEditUpdateAvatar={onEditUpdateAvatar}
             />
           }
         />
         <Route
           path="members"
-          element={<MemberList onClickedMember={handleClickMember} />}
+          element={
+            <MemberList
+              onRenderFilteredPosts={renderFilteredPosts}
+            />
+          }
         />
-        <Route
+        {/* onClickedMember={handleClickMember} */}
+
+        {/* <Route
           path="/members/:userId"
           element={
             <Member
@@ -62,7 +79,7 @@ function HomeContainer() {
               onRenderFilteredPosts={renderFilteredPosts}
             />
           }
-        />
+        /> */}
         {currentUser.admin ? (
           <Route path="invite" element={<InviteUserPage />} />
         ) : null}

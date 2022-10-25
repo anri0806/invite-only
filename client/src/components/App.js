@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect, createContext } from "react";
 
 export const UserContext = createContext();
+export const LoginUserContext = createContext();
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -30,6 +31,14 @@ function App() {
     navigate("/");
   }
 
+  function handleUpdateCurrentUser(updatedData) {
+    setCurrentUser(updatedData);
+  }
+
+  function handleUpdateAvatar(updatedData) {
+    setCurrentUser(updatedData);
+  }
+
   function handleLogout() {
     setCurrentUser(null);
 
@@ -41,7 +50,10 @@ function App() {
       <UserContext.Provider value={currentUser}>
         <NavBar onLogout={handleLogout} />
         {currentUser ? (
-          <HomeContainer />
+          <HomeContainer
+            onEditUpdate={handleUpdateCurrentUser}
+            onEditUpdateAvatar={handleUpdateAvatar}
+          />
         ) : (
           <WelcomeContainer onLogin={handleLogin} location={location} />
         )}

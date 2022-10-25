@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "./App";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -25,24 +27,45 @@ function ReadOnlyComment({
     current.getMonth() + 1
   }-${current.getDate()}`;
 
+  const loggedInUser = useContext(UserContext);
+
+
   const filteredComment = comments
     .filter((com) => com.post_id === postId)
     .map((com) => (
       <div key={com.id} className="comment-card">
         {editCommentId === com.id ? (
-          <EditComment
-            com={com}
-            onEditComment={onEditComment}
-            onSubmitHideEdit={handleHideEdit}
-          />
+          <>
+            <div className="comment">
+              <img
+                className="comment-avatar"
+                src={com.user.avatar}
+                alt="avatar"
+              />
+              <div id="comment-title">
+                <p>
+                  <b>{com.posted_by}</b>
+                </p>
+              </div>
+              {com.created_at.slice(0, 10) === date ? (
+                <p style={{ fontSize: "12px" }}>
+                  {moment(com.created_at).startOf("minutes").fromNow()}
+                </p>
+              ) : (
+                <p style={{ fontSize: "12px" }}>
+                  {com.created_at.slice(0, 10)}
+                </p>
+              )}
+              <EditComment
+                com={com}
+                onEditComment={onEditComment}
+                onSubmitHideEdit={handleHideEdit}
+              />
+            </div>
+          </>
         ) : (
           <div className="comment">
-            <div id="comment-title">
-              <p>
-                <b>{com.posted_by}</b>
-              </p>
-            </div>
-            {com.user_id === currentUser.id ? (
+            {com.user_id === loggedInUser.id ? (
               <>
                 <span
                   onClick={() => handleDeleteCom(com.id)}
@@ -58,15 +81,27 @@ function ReadOnlyComment({
                 </span>
               </>
             ) : null}
-
-            {com.created_at.slice(0, 10) === date ? (
-              <p style={{ fontSize: "12px" }}>
-                {moment.parseZone(com.created_at).startOf("day").fromNow()}
-              </p>
-            ) : (
-              <p style={{ fontSize: "12px" }}>{com.created_at.slice(0, 10)}</p>
-            )}
-
+            <div className="comment-flex">
+              <img
+                className="comment-avatar"
+                src={com.user.avatar}
+                alt="avatar"
+              />
+              <div id="comment-title">
+                <p>
+                  <b>{com.posted_by}</b>
+                </p>
+                {com.created_at.slice(0, 10) === date ? (
+                  <p style={{ fontSize: "12px" }}>
+                    {moment(com.created_at).startOf("minutes").fromNow()}
+                  </p>
+                ) : (
+                  <p style={{ fontSize: "12px" }}>
+                    {com.created_at.slice(0, 10)}
+                  </p>
+                )}
+              </div>
+            </div>
             <p style={{ marginTop: "4px" }}>{com.content}</p>
           </div>
         )}

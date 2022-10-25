@@ -142,23 +142,42 @@ code {
   background-color: white;
   border-radius: 12px;
   margin: 12px auto;
-  padding: 20px;
+  padding: 15px 20px;
   font-size: 17px;
-  /* width: 80%; */
 }
 
-/* .post-card .post {
-  margin: 10px auto;
-  text-align: center;
-} */
+.feed-flex {
+  display: flex;
+  margin-bottom: 10px;
+}
 
 .post #post-title {
-  display: inline-block;
+  /* display: inline-block; */
+  margin-left: 10px;
+  /* margin-right: 80%; */
+}
+
+.post.feed-span {
+  float: right;
 }
 
 .post span {
-  float: right;
   cursor: pointer;
+  float: right;
+  margin-left: 5px;
+}
+
+.post .feed-avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #dfdddd;
+  margin: 0;
+}
+
+.edit-post-form {
+  margin: 20px 20px 20px 0;
 }
 
 .comment-card {
@@ -173,8 +192,14 @@ code {
   margin: 0;
 }
 
+.comment-flex {
+  display: flex;
+}
+
 .comment #comment-title {
   display: inline-block;
+  margin-left: 10px;
+
 }
 
 .comment span {
@@ -195,6 +220,15 @@ code {
   margin: 0 auto;
 }
 
+.comment .comment-avatar {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #dfdddd;
+  margin: 0;
+}
+
 .profile {
   background-color: white;
   border-radius: 20px;
@@ -203,12 +237,69 @@ code {
   /* font-size: 17px; */
 }
 
+.profile .flex {
+  display: flex;
+}
+
+.profile #profile-title {
+  display: inline-block;
+}
+
+.profile #profile-info {
+  display: inline-block;
+  margin: 15px 0 10px 40px;
+}
+
 .profile p {
   margin: 0;
 }
 
+.profile .profile-avatar {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #dfdddd;
+  margin: 0;
+}
+
+.profile #edit-avatar {
+  font-size: 13px;
+  margin: 5px 0 0 30px;
+  cursor: pointer;
+  color: #7d7b7b;
+}
+
 .post-history {
   margin-top: 20px;
+  position: inherit;
+}
+
+.popup-box {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.box {
+  position: relative;
+  width: 40%;
+  min-height: 300px;
+  background-color: white;
+  opacity: 0.9;
+  margin: 12% auto;
+  padding: 20px;
+  color: #0080ff;
+}
+
+.close_button {
+  float: right;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .member-list {
@@ -228,9 +319,14 @@ code {
   border-radius: 8px;
   margin-left: 6px;
   margin-top: 2px;
-  padding: 7px;
+  padding: 10px;
   width: 49%;
   display: inline-block;
+}
+
+.member-card p {
+  cursor: pointer;
+  margin: 0;
 }
 
 .invite-page {

@@ -9,6 +9,7 @@ function EditComment({ com, onEditComment, onSubmitHideEdit }) {
   const [comment, setComment] = useState(com.content);
   const [error, setError] = useState(null);
 
+
   function handleEditComment(e) {
     e.preventDefault();
 
@@ -25,7 +26,9 @@ function EditComment({ com, onEditComment, onSubmitHideEdit }) {
           onSubmitHideEdit();
         });
       } else {
-        res.json().then((err) => setError(err.errors));
+        res.json().then((err) => {
+          setError(err.errors);
+        });
       }
     });
   }
@@ -42,7 +45,7 @@ function EditComment({ com, onEditComment, onSubmitHideEdit }) {
         <Form onSubmit={handleEditComment}>
           <Row>
             <Col xs={10}>
-              <Form.Group  controlId="formBasicCaption">
+              <Form.Group controlId="formBasicCaption">
                 <Form.Control
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
@@ -59,7 +62,7 @@ function EditComment({ com, onEditComment, onSubmitHideEdit }) {
           </Row>
         </Form>
 
-        {error ? <p>{error}</p> : null}
+        {error ? <p className="error">{error}</p> : null}
       </div>
     </div>
   );

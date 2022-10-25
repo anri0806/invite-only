@@ -3,7 +3,7 @@ class PostSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
   attributes :id, :caption, :user_id, :created_at, :picture, :posted_by, :group_id
 
-  # has_one :user
+  belongs_to :user
 
   def picture
     rails_blob_path(object.picture, only_path: true) if object.picture.attached?
@@ -16,5 +16,9 @@ class PostSerializer < ActiveModel::Serializer
   def group_id
     object.user.group_id
   end
+
+  # def avatar
+  #   byebug
+  # end
 
 end

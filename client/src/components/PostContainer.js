@@ -2,7 +2,12 @@ import { useState, useEffect } from "react";
 
 import PostCard from "./PostCard";
 
-function PostContainer({ currentUser, posts, onRenderFilteredPosts }) {
+function PostContainer({
+  currentUser,
+  posts,
+  onRenderFilteredPosts,
+  onEditPost,
+}) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -53,6 +58,7 @@ function PostContainer({ currentUser, posts, onRenderFilteredPosts }) {
         onSubmitAddCom={handleAddComment}
         onDeleteComment={handleDeleteComment}
         onEditComment={handleEditComment}
+        onEditPost={onEditPost}
       />
     </>
   );

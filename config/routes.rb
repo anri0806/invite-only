@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'application#root'
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :update]
   resources :groups, only: [:index, :show, :create]
-  resources :posts, only: [:index, :show, :create, :destroy]
+  resources :posts, only: [:index, :show, :create, :update, :destroy]
   resources :comments, only: [:index, :show, :create, :update, :destroy]
 
   get "/me", to: "users#show"

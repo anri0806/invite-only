@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
  # skip_before_action :authorize, only: [:index, :show, :create]
+ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+
 
     def index
         posts = Post.all
@@ -30,6 +32,17 @@ class PostsController < ApplicationController
         end
     end
 
+    def update
+        post = Post.find_by(id: params[:id])
+        
+        if post
+            post.update!(caption: params[:caption])
+            render json: post, status: :created           
+        else
+            render json: {errors: "Comment not found"}, status: :not_found
+        end
+    end
+
     def destroy
         post = Post.find_by(id: params[:id])
         if post
@@ -46,4 +59,9 @@ class PostsController < ApplicationController
     def post_params
         params.permit(:caption, :user_id, :picture, :group_id)
     end
+
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    end
+
 end
