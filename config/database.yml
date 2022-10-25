@@ -29,7 +29,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: react_rails_api_project_template
+  #username: react_rails_api_project_template1
 
   # The password associated with the postgres role (username).
   #password:
@@ -79,11 +79,11 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
-  <<: *default
-  database: react_rails_api_project_template_production1
-  username: react_rails_api_project_template1
-  password: <%= ENV['REACT_RAILS_API_PROJECT_TEMPLATE_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: react_rails_api_project_template_production1
+#   username: react_rails_api_project_template1
+#   password: <%= ENV['REACT_RAILS_API_PROJECT_TEMPLATE_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
