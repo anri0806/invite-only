@@ -199,7 +199,6 @@ code {
 .comment #comment-title {
   display: inline-block;
   margin-left: 10px;
-
 }
 
 .comment span {
@@ -322,10 +321,22 @@ code {
   padding: 10px;
   width: 49%;
   display: inline-block;
+  cursor: pointer;
 }
 
-.member-card p {
-  cursor: pointer;
+
+.member-name {
+  display: inline-block;
+  margin-left: 14px;
+  font-size: 16px;
+}
+
+.member-card .member-avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #dfdddd;
   margin: 0;
 }
 

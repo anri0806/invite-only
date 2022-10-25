@@ -5,17 +5,9 @@ import { UserContext } from "./App";
 
 import Member from "./Member";
 
-function MemberList({
-  onRenderFilteredPosts,
-  onClickedMember
-}) {
+function MemberList({ onRenderFilteredPosts }) {
   const [members, setMembers] = useState([]);
   const [clickedMember, setClickedMember] = useState(null);
-
-  // <Member
-  //   member={selectedMember}
-  //   onRenderFilteredPosts={renderFilteredPosts}
-  // />;
 
   const currentUser = useContext(UserContext);
 
@@ -24,10 +16,6 @@ function MemberList({
       .then((res) => res.json())
       .then((users) => setMembers(users));
   }, []);
-
-  // function handleClick(member) {
-  //   onClickedMember(member);
-  // }
 
   function handleClickedMember(member) {
     setClickedMember(member);
@@ -47,20 +35,21 @@ function MemberList({
           {members
             .filter((member) => member.id !== currentUser.id)
             .map((member) => (
-              <div key={member.id} className="member-card">
-                {/* <Link
-            to={`/members/${member.id}`}
-            onClick={() => handleClick(member)}
-          >
-            {member.username}
-          </Link> */}
-                <p onClick={() => handleClickedMember(member)}>
-                  {member.username}
-                </p>
+              <div
+                key={member.id}
+                className="member-card"
+                onClick={() => handleClickedMember(member)}
+              >
+                <img
+                  className="member-avatar"
+                  src={member.avatar}
+                  alt="avatar"
+                />
+                <div className="member-name">
+                  <p>{member.username}</p>
+                </div>
               </div>
             ))}
-
-          {/* <Outlet /> */}
         </div>
       )}
     </>
