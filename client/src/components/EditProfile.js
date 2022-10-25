@@ -9,6 +9,7 @@ function EditProfile({ currentUser, onClickClose, onEditUpdate }) {
   const [email, setEmail] = useState(currentUser.email);
   const [error, setError] = useState(null);
 
+
   function handleEditProfile(e) {
     e.preventDefault();
 
@@ -32,6 +33,7 @@ function EditProfile({ currentUser, onClickClose, onEditUpdate }) {
     });
   }
 
+  
   return (
     <div className="popup-box">
       <div className="box">

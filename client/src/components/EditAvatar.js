@@ -1,15 +1,16 @@
 import { useState, useRef } from "react";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 
 function EditAvatar({ userId, onClickClose, onEditUpdateAvatar }) {
-  //{ currentUser, onClickClose, onEditUpdate }
   const [avatar, setAvatar] = useState("");
   const [error, setError] = useState(null);
 
   const ref = useRef();
+
 
   function handleEditAvatar(e) {
     const formData = new FormData();
@@ -34,6 +35,7 @@ function EditAvatar({ userId, onClickClose, onEditUpdateAvatar }) {
     });
   }
 
+  
   return (
     <div className="popup-box">
       <div className="box">

@@ -3,7 +3,6 @@ import { UserContext } from "./App";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
 import EditPost from "./EditPost";
 
 var moment = require("moment");
@@ -15,11 +14,16 @@ function Post({ currentUser, post, onClickDelete, onEditPost }) {
     current.getMonth() + 1
   }-${current.getDate()}`;
 
+
   const loggedInUser = useContext(UserContext);
+
+
 
   function handleHideEditPost() {
     setEditPostId(null);
   }
+
+
 
   function handleClick() {
     fetch(`/posts/${post.id}`, {
@@ -31,7 +35,7 @@ function Post({ currentUser, post, onClickDelete, onEditPost }) {
     });
   }
 
-  ////// AVATAR needs to be => member.avatar
+
 
   return (
     <Card className="post" border="white" style={{ position: "inherit" }}>
@@ -91,7 +95,6 @@ function Post({ currentUser, post, onClickDelete, onEditPost }) {
                 <Card.Title>{post.posted_by}</Card.Title>
                 {post.created_at.slice(0, 10) === date ? (
                   <Card.Text style={{ fontSize: "12px" }}>
-                    {/* {moment.parseZone(post.updated_at).startOf("day").fromNow()} */}
                     {moment(post.created_at).startOf("minutes").fromNow()}
                   </Card.Text>
                 ) : (

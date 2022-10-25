@@ -11,25 +11,31 @@ function Profile({ currentUser, onEditUpdate, onEditUpdateAvatar }) {
   const [userId, setUserId] = useState(null);
   const [showAvatarForm, setShowAvatarForm] = useState(false);
 
+
   const loggedInUser = useContext(UserContext);
+
 
   function handleCloseProfilePopup() {
     setShowProfileForm(false);
   }
 
+
   function handleCloseAvatarPopup() {
     setShowAvatarForm(false);
   }
 
+
   function handleShowProfileForm() {
     setShowProfileForm((showProfileForm) => !showProfileForm);
   }
+
 
   function handleShowAvatarForm(id) {
     setShowAvatarForm((showAvatarForm) => !showAvatarForm);
     setUserId(id);
   }
 
+  
   return (
     <>
       {showAvatarForm ? (

@@ -12,9 +12,11 @@ function RegisterUser({ onLogin, currentGroup }) {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [errors, setErrors] = useState(null);
 
+
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -50,6 +52,7 @@ function RegisterUser({ onLogin, currentGroup }) {
     setPasswordConfirm("");
   }
 
+
   return (
     <div className="register-box">
       <h5>Step 2. Create account </h5>
@@ -58,7 +61,6 @@ function RegisterUser({ onLogin, currentGroup }) {
       </p>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicUsername">
-          {/* <Form.Label>Username</Form.Label> */}
           <Form.Control
             value={formData.username}
             onChange={handleChange}
@@ -68,7 +70,6 @@ function RegisterUser({ onLogin, currentGroup }) {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          {/* <Form.Label>Email</Form.Label> */}
           <Form.Control
             value={formData.email}
             onChange={handleChange}
@@ -78,7 +79,6 @@ function RegisterUser({ onLogin, currentGroup }) {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          {/* <Form.Label>Password</Form.Label> */}
           <Form.Control
             value={formData.password}
             onChange={handleChange}
@@ -88,7 +88,6 @@ function RegisterUser({ onLogin, currentGroup }) {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPasswordConfirmation">
-          {/* <Form.Label>Confirm password</Form.Label> */}
           <Form.Control
             value={passwordConfirm}
             onChange={(e) => setPasswordConfirm(e.target.value)}

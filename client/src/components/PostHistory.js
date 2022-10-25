@@ -14,7 +14,6 @@ function PostHistory({ currentUser, userPosts, onRenderFilteredPosts }) {
             onRenderFilteredPosts={onRenderFilteredPosts}
           />
         </Tab>
-        {/* <Tab eventKey="example" title="example"></Tab> */}
       </Tabs>
     </div>
   );

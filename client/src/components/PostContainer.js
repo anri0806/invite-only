@@ -10,6 +10,7 @@ function PostContainer({
 }) {
   const [comments, setComments] = useState([]);
 
+
   useEffect(() => {
     fetch(`/group_posts/${currentUser.group_id}`)
       .then((res) => res.json())
@@ -22,19 +23,23 @@ function PostContainer({
       .then((comments) => setComments(comments));
   }, [comments.id]);
 
+
   function handleDeletePost(deletedItem) {
     const updatedPosts = posts.filter((post) => post.id !== deletedItem.id);
     onRenderFilteredPosts(updatedPosts);
   }
 
+
   function handleAddComment(newComment) {
     setComments([...comments, newComment]);
   }
+
 
   function handleDeleteComment(deletedItemID) {
     const updatedComments = comments.filter((com) => com.id !== deletedItemID);
     setComments(updatedComments);
   }
+
 
   function handleEditComment(updatedItem) {
     const updatedComments = comments.map((com) =>
@@ -44,9 +49,11 @@ function PostContainer({
     setComments(updatedComments);
   }
 
+
   const sortedPosts = [...posts].sort((a, b) =>
     a.created_at > b.created_at ? -1 : 1
   );
+  
 
   return (
     <>

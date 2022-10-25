@@ -9,7 +9,10 @@ function MemberList({ onRenderFilteredPosts }) {
   const [members, setMembers] = useState([]);
   const [clickedMember, setClickedMember] = useState(null);
 
+
   const currentUser = useContext(UserContext);
+
+
 
   useEffect(() => {
     fetch(`/get_users/${currentUser.group_id}`)
@@ -17,10 +20,13 @@ function MemberList({ onRenderFilteredPosts }) {
       .then((users) => setMembers(users));
   }, []);
 
+
+
   function handleClickedMember(member) {
     setClickedMember(member);
   }
 
+  
   return (
     <>
       {clickedMember ? (

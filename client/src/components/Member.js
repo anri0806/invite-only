@@ -9,8 +9,6 @@ function Member({ member, onRenderFilteredPosts }) {
         currentUser={member}
         onRenderFilteredPosts={onRenderFilteredPosts}
       />
-      {/* <br />
-      <Link to="/members">Go back to members</Link> */}
     </>
   );
 }

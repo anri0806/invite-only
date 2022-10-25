@@ -12,7 +12,9 @@ function InviteForm() {
   const [error, setError] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
 
+
   const currentUser = useContext(UserContext);
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,11 +25,7 @@ function InviteForm() {
 
     fetch("/users/invitation", {
       method: "POST",
-      //   headers: {
-      //     "Content-Type": "application.json",
-      //   },
       body: formData,
-      //   JSON.stringify({ user: { email: email } })
     }).then((res) => {
       if (res.ok) {
         setShowAlert((showAlert) => !showAlert);

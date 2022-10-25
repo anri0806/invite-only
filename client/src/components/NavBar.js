@@ -11,11 +11,13 @@ import Navbar from "react-bootstrap/Navbar";
 function NavBar({ onLogout }) {
   const currentUser = useContext(UserContext);
 
+
   function handleClick() {
     fetch("/logout", {
       method: "DELETE",
     }).then(() => onLogout());
   }
+
 
   return (
     <Navbar
@@ -52,18 +54,15 @@ function NavBar({ onLogout }) {
             <Nav.Link onClick={handleClick} className="navBar-link">
               Logout
             </Nav.Link>
-            {/* <Navbar.Brand href="feed" id="navBar-family"> */}
             <div id="navBar-family">
               <b>{currentUser.group_name}</b>
             </div>
-            {/* </Navbar.Brand> */}
           </>
         ) : (
           <>
             <Link to="/">
               <img src={logo} alt="logo" width="65px" />
             </Link>
-            {/* | <Link to="register">Register</Link> */}
           </>
         )}
       </Container>

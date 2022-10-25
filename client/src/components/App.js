@@ -2,8 +2,8 @@ import "../App.css";
 import WelcomeContainer from "./WelcomeContainer";
 import HomeContainer from "./HomeContainer";
 import NavBar from "./NavBar";
-import { useLocation } from "react-router-dom";
 
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, createContext } from "react";
 
@@ -17,6 +17,8 @@ function App() {
 
   let location = useLocation();
 
+
+
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
@@ -25,25 +27,35 @@ function App() {
     });
   }, []);
 
+
+
   function handleLogin(user) {
     setCurrentUser(user);
 
     navigate("/");
   }
 
+
+
   function handleUpdateCurrentUser(updatedData) {
     setCurrentUser(updatedData);
   }
 
+
+
   function handleUpdateAvatar(updatedData) {
     setCurrentUser(updatedData);
   }
+
+
 
   function handleLogout() {
     setCurrentUser(null);
 
     navigate("/");
   }
+
+
 
   return (
     <div className="app">
@@ -58,13 +70,6 @@ function App() {
           <WelcomeContainer onLogin={handleLogin} location={location} />
         )}
       </UserContext.Provider>
-      {/* <Routes>
-        <Route
-          path="users/invitation/accept"
-          element={<InviteeSignup onLogin={handleLogin} location={location} />}
-        />
-        <Route path="*" />
-      </Routes> */}
     </div>
   );
 }

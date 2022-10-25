@@ -12,6 +12,7 @@ function EditPost({ post, onSubmitHideEditPost, onEditPost }) {
 
   const ref = useRef();
 
+
   function handleEditPost(e) {
     e.preventDefault();
 
@@ -56,17 +57,6 @@ function EditPost({ post, onSubmitHideEditPost, onEditPost }) {
                 />
               </Form.Group>
             </Col>
-            {/* <Col xs={4}>
-              <Form.Group controlId="formBasicPicture">
-                <Form.Control
-                    // value={picture}
-                  onChange={(e) => setPicture(e.target.files[0])}
-                  ref={ref}
-                  type="file"
-                  name="picture"
-                />
-              </Form.Group>
-            </Col> */}
             <Col>
               <Button variant="primary" type="submit">
                 Update

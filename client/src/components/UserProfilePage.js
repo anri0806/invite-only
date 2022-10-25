@@ -11,11 +11,14 @@ function UserProfilePage({
 }) {
   const [userPosts, setUserPosts] = useState([]);
 
+
   useEffect(() => {
     fetch(`/user_posts/${currentUser.id}`)
       .then((res) => res.json())
       .then((posts) => setUserPosts(posts));
   }, []);
+
+  
   return (
     <>
       <Profile

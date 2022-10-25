@@ -12,9 +12,12 @@ function PostForm({ onSubmitAdd }) {
   const [picture, setPicture] = useState(null);
   const [errors, setErrors] = useState([]);
 
+
   const currentUser = useContext(UserContext);
 
+
   const ref = useRef();
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -45,6 +48,7 @@ function PostForm({ onSubmitAdd }) {
     setErrors([]);
   }
 
+  
   return (
     <div className="feed-form-box">
       <Form onSubmit={handleSubmit} id="form">

@@ -27,6 +27,7 @@ function ReadOnlyComment({
     current.getMonth() + 1
   }-${current.getDate()}`;
 
+
   const loggedInUser = useContext(UserContext);
 
 
@@ -108,6 +109,8 @@ function ReadOnlyComment({
       </div>
     ));
 
+
+
   function handleDeleteCom(commentId) {
     fetch(`/comments/${commentId}`, {
       method: "DELETE",
@@ -117,6 +120,8 @@ function ReadOnlyComment({
       }
     });
   }
+
+
 
   function handleAddComment(e) {
     e.preventDefault();
@@ -143,10 +148,14 @@ function ReadOnlyComment({
     setContent("");
   }
 
+
+
   function handleHideEdit() {
     setEditCommentId(null);
   }
 
+
+  
   return (
     <>
       {filteredComment}

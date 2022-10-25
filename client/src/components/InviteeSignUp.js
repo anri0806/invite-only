@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
+
 function InviteeSignup({ onLogin, location }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,12 +13,16 @@ function InviteeSignup({ onLogin, location }) {
   const [errors, setErrors] = useState(null);
   const [group, setGroup] = useState("");
 
+
+
   useEffect(() => {
     fetch(`/get_group/${location.search.slice(18)}`)
       .then((res) => res.json())
       .then((group) => setGroup(group.group_name));
   }, []);
 
+
+  
   function handleSubmit(e) {
     e.preventDefault();
 

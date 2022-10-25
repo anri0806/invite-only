@@ -10,6 +10,7 @@ function Register({ onLogin }) {
   const [createdGroup, setCreatedGroup] = useState(false);
   const [error, setError] = useState(null);
 
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -33,6 +34,7 @@ function Register({ onLogin }) {
     setGroupName("");
   }
 
+  
   return (
     <div className="register">
       <div className="register-titles">
