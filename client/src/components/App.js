@@ -18,6 +18,7 @@ function App() {
   let location = useLocation();
 
 
+/////// keep user logged in
 
   useEffect(() => {
     fetch("/me").then((response) => {
