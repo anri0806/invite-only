@@ -1,0 +1,19 @@
+databases:
+  - name: invite-only-app
+    databaseName: invite-only-app
+    user: invite-only-app
+
+services:
+  - type: web
+    name: invite-only-app
+    env: ruby
+    repo: https://github.com/anri0806/invite-only-app
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: invite-only-app
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
