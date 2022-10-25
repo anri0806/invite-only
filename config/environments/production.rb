@@ -1,7 +1,21 @@
 require "active_support/core_ext/integer/time"
 
+# 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
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+
+  ActionMailer::Base.smtp_settings = {
+  :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+  :password => 'Rails.application.credentials.sendgrid_api_key', # This is the secret sendgrid API key which was issued during API key creation
+  :domain => 'invite-only.com',
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+
+
   config.time_zone = 'Eastern Time (US & Canada)'
 
     # # absolute urls with routing url helpers.
@@ -36,7 +50,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present? || ENV['RENDER'].present?
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = 'http://assets.example.com'

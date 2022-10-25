@@ -17,6 +17,7 @@ u2 = User.create(username: "Dylan", email: "dylan@gmail.com", password: "abcdefg
 u3 = User.create(username: "Susan", email: "susan@gmail.com", password: "444444444", admin: false, group_id: g1.id)
 u4 = User.create(username: "Emma", email: "emma@gmail.com", password: "333333333", admin: false, group_id: g1.id)
 u5 = User.create(username: "David", email: "david@gmail.com", password: "555555555", admin: false, group_id: g1.id)
+
 u7 = User.create(username: "Tiffany", email: "tiffany@gmail.com", password: "111111111", admin: true, group_id: g2.id)
 u8 = User.create(username: "Sarah", email: "sarah@gmail.com", password: "222222222", admin: false, group_id: g2.id)
 u9 = User.create(username: "Antoinette", email: "antoinette@gmail.com", password: "333333333", admin: false, group_id: g2.id)
