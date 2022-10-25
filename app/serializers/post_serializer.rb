@@ -17,8 +17,4 @@ class PostSerializer < ActiveModel::Serializer
     object.user.group_id
   end
 
-  # def avatar
-  #   byebug
-  # end
-
 end
