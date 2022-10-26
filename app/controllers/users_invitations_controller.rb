@@ -3,8 +3,6 @@ class UsersInvitationsController < Devise::InvitationsController
 
     def create
         new_user = User.invite_guest!(invite_params)
-        ## new_user.invitation_token => in serializer, 
-        ## new_user.raw_invitation_token => in url
 
         if new_user.valid?
            render json: new_user, status: :ok
@@ -29,19 +27,10 @@ class UsersInvitationsController < Devise::InvitationsController
         end
       end
 
-    # def edit
-    #     sign_out send("current_#{resource_name}") if send("#{resource_name}_signed_in?")
-    #     set_minimum_password_length
-    #     resource.invitation_token = params[:invitation_token]
-    #     redirect_to "http://localhost:4000/users/invitation/accept?invitation_token=#{params[:invitation_token]}"
-    # end
-
     private
 
     def invite_params
         params.permit(:email, :group_id, :username, :admin, :invitation_token)
-        # params.require(:user).permit(:email)
-        # params.fetch(:user, {}).permit(:email)
     end
 
 end
