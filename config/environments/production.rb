@@ -6,7 +6,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   ActionMailer::Base.smtp_settings = {
-  :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+  :user_name => 'invite-only', # This is the string literal 'apikey', NOT the ID of your API key
   :password => 'Rails.application.credentials.sendgrid_api_key', # This is the secret sendgrid API key which was issued during API key creation
   :domain => 'invite-only.onrender.com',
   :address => 'smtp.sendgrid.net',
