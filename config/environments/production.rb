@@ -12,7 +12,7 @@ Rails.application.configure do
     address:              "smtp.gmail.com",
     port:                 587,
     domain:               "invite-only.onrender.com",
-    user_name:            "anri.flatiron@gmail.com",
+    user_name:            "invite.only.invitations@gmail.com",
     password:             Rails.application.credentials.google_secret_password,
     authentication:       "plain",
     enable_starttls_auto: true
