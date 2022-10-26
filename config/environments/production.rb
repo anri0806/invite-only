@@ -8,14 +8,14 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
   :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
   :password => 'Rails.application.credentials.sendgrid_api_key', # This is the secret sendgrid API key which was issued during API key creation
-  :domain => 'invite-only.com',
+  :domain => 'invite-only.onrender.com',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
   :enable_starttls_auto => true
 }
 
-config.action_mailer.default_url_options = {host:'invite-only.com'}
+config.action_mailer.default_url_options = {host:'invite-only.onrender.com'}
 
   config.time_zone = 'Eastern Time (US & Canada)'
 
@@ -86,6 +86,7 @@ config.action_mailer.default_url_options = {host:'invite-only.com'}
   # config.active_job.queue_name_prefix = "phase_4_project_guidelines_production"
 
   config.action_mailer.perform_caching = false
+  config.action.mailer.perform_deliveries = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
