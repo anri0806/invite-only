@@ -8,25 +8,25 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :smtp
   # host = "https://invite-only.onrender.com/"
   
-  # ActionMailer::Base.smtp_settings = {
-  #   address:              "smtp.gmail.com",
-  #   port:                 587,
-  #   domain:               "invite-only.onrender.com",
-  #   user_name:            "anri.flatiron@gmail.com",
-  #   password:             "ywobyjbqxwfrbjin",
-  #   authentication:       "plain",
-  #   enable_starttls_auto: true
-  # }
-
   ActionMailer::Base.smtp_settings = {
-  :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
-  :password => Rails.application.credentials.sendgrid_api_key, # This is the secret sendgrid API key which was issued during API key creation
-  :domain => 'invite-only.onrender.com',
-  :address => 'smtp.sendgrid.net',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
-}
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               "invite-only.onrender.com",
+    user_name:            "anri.flatiron@gmail.com",
+    password:             Rails.application.credentials.google_secret_password,
+    authentication:       "plain",
+    enable_starttls_auto: true
+  }
+
+#   ActionMailer::Base.smtp_settings = {
+#   :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+#   :password => Rails.application.credentials.sendgrid_api_key, # This is the secret sendgrid API key which was issued during API key creation
+#   :domain => 'invite-only.onrender.com',
+#   :address => 'smtp.sendgrid.net',
+#   :port => 587,
+#   :authentication => :plain,
+#   :enable_starttls_auto => true
+# }
 
 config.action_mailer.default_url_options = {host:'invite-only.onrender.com'}
 
