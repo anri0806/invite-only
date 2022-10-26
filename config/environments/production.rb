@@ -5,8 +5,8 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # config.action_mailer.delivery_method = :smtp
-  # host = "https://invite-only.onrender.com/"
+  config.action_mailer.delivery_method = :smtp
+  host = "https://invite-only.onrender.com/"
   
   ActionMailer::Base.smtp_settings = {
     address:              "smtp.gmail.com",
