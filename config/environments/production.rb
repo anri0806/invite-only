@@ -42,7 +42,7 @@ config.action_mailer.default_url_options = {host:'invite-only.onrender.com'}
   # config.action_mailer.delivery_method = :test
   # config.action_mailer.delivery_method = :sendmail
   # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.default_options = {from: 'no-reply@example.com'}
+  config.action_mailer.default_options = {from: 'no-reply@invite-only.com'}
   ######################
 
 
