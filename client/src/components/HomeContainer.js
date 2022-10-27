@@ -6,7 +6,6 @@ import { UserContext } from "./App";
 import FeedPage from "./FeedPage";
 import UserProfilePage from "./UserProfilePage";
 import MemberList from "./MemberList";
-import Member from "./Member";
 import InviteUserPage from "./InviteUserPage";
 
 function HomeContainer({ onEditUpdate, onEditUpdateAvatar }) {

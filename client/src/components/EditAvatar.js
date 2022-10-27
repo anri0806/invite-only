@@ -2,8 +2,6 @@ import { useState, useRef } from "react";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/esm/Col";
-import Row from "react-bootstrap/esm/Row";
 
 function EditAvatar({ userId, onClickClose, onEditUpdateAvatar }) {
   const [avatar, setAvatar] = useState("");

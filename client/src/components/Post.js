@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { UserContext } from "./App";
 
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import EditPost from "./EditPost";
 

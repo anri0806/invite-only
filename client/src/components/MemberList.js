@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "./App";
 

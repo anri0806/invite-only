@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import avatar from "../Images/avatar.jpg";
+import { useState } from "react";
 import EditProfile from "./EditProfile";
 import EditAvatar from "./EditAvatar";
 

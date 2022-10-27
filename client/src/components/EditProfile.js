@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/esm/Col";
-import Row from "react-bootstrap/esm/Row";
 
 function EditProfile({ currentUser, onClickClose, onEditUpdate }) {
   const [username, setUsername] = useState(currentUser.username);

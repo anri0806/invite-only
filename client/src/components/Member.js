@@ -1,5 +1,4 @@
 import UserProfilePage from "./UserProfilePage";
-import { Link } from "react-router-dom";
 
 function Member({ member, onRenderFilteredPosts }) {
 
