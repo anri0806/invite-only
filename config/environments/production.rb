@@ -17,7 +17,7 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.action_mailer.default_options = {from: 'no-reply@invite.com'}
+  # config.action_mailer.default_options = {from: 'Invite Only <no-reply@invite-only.com>'}
 
 #   ActionMailer::Base.smtp_settings = {
 #   :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
