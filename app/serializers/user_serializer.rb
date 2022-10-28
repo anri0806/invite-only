@@ -1,6 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :username, :email, :admin, :group_id, :avatar, :created_at, :group_name
+  attributes :id, :username, :email, :admin, :group_id, :avatar, :created_at, :group_name, :invitation_token
   
   def group_name
     object.group.group_name

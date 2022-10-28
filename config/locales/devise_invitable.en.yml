@@ -17,6 +17,7 @@ en:
         submit_button: "Set my password"
     mailer:
       invitation_instructions:
+        link_in_email: "http://localhost:4000/users/invitation/accept?invitation_token="
         subject: "Invitation instructions"
         hello: "Hello,"
         someone_invited_you: "You have been invited to join a private group on Invite Only, you can accept it through the link below."

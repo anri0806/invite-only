@@ -4,15 +4,12 @@ class ApplicationController < ActionController::API
   respond_to :json
   
 
-  def root
-    if Rails.env.development?
-
-      # For urls in email
-      Rails.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
-
-
-    end
-  end
+  # def root
+  #   if Rails.env.development?
+  #     # For urls in email
+  #     Rails.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
+  #   end
+  # end
 
   protected
 

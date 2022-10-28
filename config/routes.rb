@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'application#root'
+  # root to: 'application#root'
 
   resources :users, only: [:index, :update]
   resources :groups, only: [:index, :show, :create]
@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 
 
   devise_scope :user do
-    patch 'users/invitation/accept', to: 'users_invitations#update'
+    patch '/accept_invitation', to: 'users_invitations#update'
+    # patch 'users/invitation/accept', to: 'users_invitations#update'
   end
   
   devise_for :users, path: '', path_names: {

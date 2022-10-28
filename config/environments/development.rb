@@ -8,10 +8,10 @@ Rails.application.configure do
   config.time_zone = 'Eastern Time (US & Canada)'
 
   # For urls in email
-  config.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # absolute urls with routing url helpers.
-  # Rails.application.routes.default_url_options = { host: 'localhost', port: 3000 }
+  Rails.application.routes.default_url_options = { host: 'localhost', port: 3000 }
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
