@@ -13,7 +13,7 @@ function WelcomeContainer({ onLogin, location }) {
         <Route path="/" element={<Login onLogin={onLogin} />} />
         <Route path="register" element={<Register onLogin={onLogin} />} />
         <Route
-          path="users/invitation/accept"
+          path="users/invitation/accept/:token"
           element={<InviteeSignup onLogin={onLogin} location={location} />}
         />
       </Routes>
