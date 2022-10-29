@@ -11,23 +11,18 @@ Invite Only is a private social media designed for anyone or anything from close
 ## Usage
 
 1. Log in/ Sign up
-
 A user can sign up as an admin and create a group.  Once logged in, admin user can invite people by email on the Invite People tab.  Invited user will receive an email with "Accept invitation" link.  Once clicked, it will direct a user to sign up page to join a private group.
 
 2. Feed 
-
 Users will be able to see the posts in a private group that they were invited to, as well as post pictures and comments once logged in.
 
 3. Profile 
-
 On profile tab, users can see their own profile as well as posts history.
 
 4. Members
-
 Users can see the list of members in a group. They can also view each member's profile page and posts histories.
 
 5. Invite people
-
 Only admin user will be able to see the "Invite People" tab.  Admin user can invite people by entering email and it will automatically send invitation email to the person.
 
 
