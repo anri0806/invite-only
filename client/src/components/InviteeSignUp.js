@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -12,17 +13,20 @@ function InviteeSignup({ onLogin }) {
   const [confirmationPassword, setConfirmationPassword] = useState("");
   const [errors, setErrors] = useState(null);
   const [group, setGroup] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   let { token } = useParams();
 
   useEffect(() => {
-  fetch(`/get_group/${token}`)
+    fetch(`/get_group/${token}`)
       .then((res) => res.json())
       .then((group) => setGroup(group.group_name));
   }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    setIsLoading(true);
 
     fetch(
       `/accept_invitation`,
@@ -45,10 +49,12 @@ function InviteeSignup({ onLogin }) {
     ).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
+          setIsLoading(false);
           onLogin(user);
         });
       } else {
         res.json().then((err) => {
+          setIsLoading(false);
           setErrors(err.errors);
         });
       }
@@ -99,11 +105,12 @@ function InviteeSignup({ onLogin }) {
             </Form.Group>
           </Col>
         </Row>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={isLoading}>
           Join
         </Button>
       </Form>
       <br />
+      {isLoading ? <LoadingSpinner /> : null}
       {errors ? (
         <>
           {errors.map((err) => (

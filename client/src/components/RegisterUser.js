@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import LoadingSpinner from "./LoadingSpinner";
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -11,15 +13,16 @@ function RegisterUser({ onLogin, currentGroup }) {
   });
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [errors, setErrors] = useState(null);
-
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
 
-
   function handleSubmit(e) {
     e.preventDefault();
+
+    setIsLoading(true);
 
     fetch("/signup", {
       method: "POST",
@@ -39,10 +42,12 @@ function RegisterUser({ onLogin, currentGroup }) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((res) => {
+          setIsLoading(false);
           onLogin(res.data);
         });
       } else {
         res.json().then((err) => {
+          setIsLoading(false);
           setErrors(err.status.message);
         });
       }
@@ -52,9 +57,9 @@ function RegisterUser({ onLogin, currentGroup }) {
     setPasswordConfirm("");
   }
 
-
   return (
     <div className="register-box">
+      {isLoading ? <LoadingSpinner /> : null}
       <h5>Step 2. Create account </h5>
       <p style={{ fontSize: "14px" }}>
         *You can start inviting people after creating your account
@@ -96,7 +101,7 @@ function RegisterUser({ onLogin, currentGroup }) {
             placeholder="Confirm password"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={isLoading}>
           Create account
         </Button>
       </Form>
