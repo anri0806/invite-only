@@ -17,7 +17,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def destroy
-    super
+    # super
     session.delete :user_id
     head :no_content
   end
