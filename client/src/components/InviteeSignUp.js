@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-function InviteeSignup({ onLogin, location }) {
+function InviteeSignup({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmationPassword, setConfirmationPassword] = useState("");
@@ -14,11 +14,8 @@ function InviteeSignup({ onLogin, location }) {
   const [group, setGroup] = useState("");
 
   let { token } = useParams();
-  // console.log("token: ", token);
-  // console.log("location: ", location);
 
   useEffect(() => {
-  // fetch(`/get_group/${location.search.slice(18)}`)
   fetch(`/get_group/${token}`)
       .then((res) => res.json())
       .then((group) => setGroup(group.group_name));
@@ -41,7 +38,6 @@ function InviteeSignup({ onLogin, location }) {
             password: password,
             password_confirmation: confirmationPassword,
             admin: false,
-            // invitation_token: location.search.slice(18),
             invitation_token: token,
           },
         }),
