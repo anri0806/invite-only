@@ -68,7 +68,7 @@ function InviteeSignup({ onLogin }) {
               type="text"
               name="username"
               placeholder="Enter username"
-              // required
+              required
             />
           </Form.Group>
           <Col>

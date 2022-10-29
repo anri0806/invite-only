@@ -21,9 +21,7 @@ class UsersInvitationsController < Devise::InvitationsController
         # update user data
         new_user = User.accept_invitation!(invitation_token: params[:user][:invitation_token], username: params[:user][:username], password: params[:user][:password], password_confirmation: params[:user][:password_confirmation], admin: params[:user][:admin])
 
-        # byebug
-
-        if new_user
+        if new_user.valid?
           session[:user_id] = new_user.id
           render json: new_user, status: :ok
         else
