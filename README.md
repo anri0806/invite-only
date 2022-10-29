@@ -5,6 +5,7 @@
 Invite Only is a private social media designed for anyone or anything from close friends to extended family or for any occasions like trips, weddings, etc. The user will be able to create a group to share posts and only invited users can see them. Users will only be able to sign up through an invitation email by admin user. 
 <br />
 
+
 <img src="/client/src/Images/invite-only.png" alt="Alt text" title="invite-only">
 
 
