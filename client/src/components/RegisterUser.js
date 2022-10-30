@@ -72,6 +72,7 @@ function RegisterUser({ onLogin, currentGroup }) {
             type="text"
             name="username"
             placeholder="Type username"
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
