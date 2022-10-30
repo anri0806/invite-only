@@ -11,20 +11,15 @@ import InviteUserPage from "./InviteUserPage";
 function HomeContainer({ onEditUpdate, onEditUpdateAvatar }) {
   const [posts, setPosts] = useState([]);
 
-
   const currentUser = useContext(UserContext);
-
 
   function renderNewPost(newPost) {
     setPosts([newPost, ...posts]);
   }
 
-
-
   function renderFilteredPosts(filteredPosts) {
     setPosts(filteredPosts);
   }
-
 
   function handleEditPost(updatedItem) {
     const updatedPosts = posts.map((post) =>
@@ -33,8 +28,6 @@ function HomeContainer({ onEditUpdate, onEditUpdateAvatar }) {
 
     setPosts(updatedPosts);
   }
-
-
 
   return (
     <div className="home-container">
@@ -59,16 +52,13 @@ function HomeContainer({ onEditUpdate, onEditUpdateAvatar }) {
               onRenderFilteredPosts={renderFilteredPosts}
               onEditUpdate={onEditUpdate}
               onEditUpdateAvatar={onEditUpdateAvatar}
+              posts={posts}
             />
           }
         />
         <Route
           path="members"
-          element={
-            <MemberList
-              onRenderFilteredPosts={renderFilteredPosts}
-            />
-          }
+          element={<MemberList onRenderFilteredPosts={renderFilteredPosts} />}
         />
         {currentUser.admin ? (
           <Route path="invite" element={<InviteUserPage />} />

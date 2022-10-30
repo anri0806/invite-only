@@ -133,9 +133,9 @@ function ReadOnlyComment({
       },
       body: JSON.stringify({
         content: content,
-        user_id: currentUser.id,
+        user_id: loggedInUser.id,
         post_id: postId,
-        group_id: currentUser.group_id,
+        group_id: loggedInUser.group_id,
       }),
     }).then((res) => {
       if (res.ok) {

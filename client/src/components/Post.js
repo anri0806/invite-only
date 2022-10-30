@@ -6,7 +6,7 @@ import EditPost from "./EditPost";
 
 var moment = require("moment");
 
-function Post({ currentUser, post, onClickDelete, onEditPost }) {
+function Post({ post, onClickDelete, onEditPost }) {
   const [editPostId, setEditPostId] = useState(null);
   const current = new Date();
   const date = `${current.getFullYear()}-${
