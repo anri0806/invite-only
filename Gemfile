@@ -53,3 +53,4 @@ gem "active_model_serializers", "~> 0.10.12"
 gem "devise"
 gem 'devise_invitable', '~> 2.0.0'
 gem "letter_opener", group: :development
+gem "aws-sdk-s3", "~> 1.117"
