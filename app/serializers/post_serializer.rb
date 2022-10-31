@@ -6,7 +6,7 @@ class PostSerializer < ActiveModel::Serializer
   belongs_to :user
 
   def picture
-    rails_storage_proxy_path(object.picture) if object.picture.attached?
+    rails_storage_proxy_path(object.picture, only_path: true) if object.picture.attached?
 
     # rails_blob_path(object.picture, only_path: true) if object.picture.attached?
   end
