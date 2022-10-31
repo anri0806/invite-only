@@ -75,7 +75,6 @@ code {
   animation: spinner 1.5s linear infinite;
 }
 
-
 .error {
   color: red;
   margin: 0 0 14px 0;
@@ -194,6 +193,10 @@ code {
   border-radius: 50%;
   border: 1px solid #dfdddd;
   margin: 0;
+}
+
+.feed-post-image {
+  max-width: 100%;
 }
 
 .edit-post-form {
@@ -343,7 +346,6 @@ code {
   display: inline-block;
   cursor: pointer;
 }
-
 
 .member-name {
   display: inline-block;

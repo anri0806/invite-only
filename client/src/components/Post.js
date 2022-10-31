@@ -13,16 +13,11 @@ function Post({ post, onClickDelete, onEditPost }) {
     current.getMonth() + 1
   }-${current.getDate()}`;
 
-
   const loggedInUser = useContext(UserContext);
-
-
 
   function handleHideEditPost() {
     setEditPostId(null);
   }
-
-
 
   function handleClick() {
     fetch(`/posts/${post.id}`, {
@@ -33,8 +28,6 @@ function Post({ post, onClickDelete, onEditPost }) {
       }
     });
   }
-
-
 
   return (
     <Card className="post" border="white" style={{ position: "inherit" }}>
@@ -62,7 +55,7 @@ function Post({ post, onClickDelete, onEditPost }) {
             onEditPost={onEditPost}
           />
           {post.picture === null ? null : (
-            <img src={post.picture} width="100%" alt="" />
+            <img src={post.picture} className="feed-post-image" alt="" />
           )}
         </Card.Body>
       ) : (
@@ -106,7 +99,7 @@ function Post({ post, onClickDelete, onEditPost }) {
 
             <Card.Text>{post.caption}</Card.Text>
             {post.picture === null ? null : (
-              <img src={post.picture} width="100%" alt="" />
+              <img src={post.picture} className="feed-post-image" alt="" />
             )}
           </Card.Body>
         </>

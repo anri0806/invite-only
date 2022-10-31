@@ -8,4 +8,6 @@ class Post < ApplicationRecord
     has_one_attached :picture, dependent: :destroy
     
     validates :caption, length: {maximum: 100}, presence: true
+
+
 end
