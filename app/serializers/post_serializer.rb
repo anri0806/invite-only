@@ -5,15 +5,10 @@ class PostSerializer < ActiveModel::Serializer
 
   belongs_to :user
 
-  # def picture_url
-  #   return unless object.picture.attached?
-  #   object.picture.blob.attributes
-  #     .slice('filename', 'byte_size', 'id')
-  #     .merge(url: picture(object.picture))
-  # end
-
   def picture
-    rails_blob_path(object.picture, only_path: true) if object.picture.attached?
+    rails_storage_proxy_path(object.picture) if object.picture.attached?
+
+    # rails_blob_path(object.picture, only_path: true) if object.picture.attached?
   end
 
   def posted_by
