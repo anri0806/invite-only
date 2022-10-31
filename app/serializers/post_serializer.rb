@@ -6,10 +6,10 @@ class PostSerializer < ActiveModel::Serializer
   belongs_to :user
 
   # def picture_url
-    # return unless object.picture.attached?
-    # object.picture.blob.attributes
-    #   .slice('filename', 'byte_size', 'id')
-    #   .merge(url: picture_url(object.picture))
+  #   return unless object.picture.attached?
+  #   object.picture.blob.attributes
+  #     .slice('filename', 'byte_size', 'id')
+  #     .merge(url: picture(object.picture))
   # end
 
   def picture
