@@ -5,7 +5,7 @@ class Post < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_many :users, through: :comments
 
-    has_one_attached :picture
+    has_one_attached :picture, dependent: :destroy
     
     validates :caption, length: {maximum: 100}, presence: true
 end

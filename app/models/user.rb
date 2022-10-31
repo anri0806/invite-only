@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :posts, through: :comments
 
-  has_one_attached :avatar
+  has_one_attached :avatar, dependent: :destroy
      
   attr_accessor :invitation_instructions
 

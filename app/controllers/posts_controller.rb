@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 
     def index
         posts = Post.all
-        render json: posts
+        
+        render json: posts, include: ['images'], status: :ok
     end
 
     def group_posts
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
 
     def create
         post = Post.create(post_params)
+
         if post.valid?
             render json: post, status: :created
         else
@@ -56,7 +58,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.permit(:caption, :user_id, :picture, :group_id)
+        params.permit(:caption, :picture, :user_id, :group_id)
     end
 
     def render_unprocessable_entity_response(invalid)
