@@ -45,11 +45,11 @@ Only admin user will be able to see the "Invite People" tab.  Admin user can inv
 1. Fork and clone this repository
 2. Open the project file and run followings:
 
-bundle install
-rails db:create
-npm install --prefix client
-rails s
-npm start --prefix client
+- bundle install
+- rails db:create
+- npm install --prefix client
+- rails s
+- npm start --prefix client
 
 
 ## Contact

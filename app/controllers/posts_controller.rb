@@ -25,7 +25,6 @@ class PostsController < ApplicationController
 
     def create
         post = Post.create(post_params)
-        # post.picture.attach(params[:picture])
 
         if post.valid?
             render json: post, status: :created
