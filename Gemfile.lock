@@ -102,6 +102,10 @@ GEM
       actionmailer (>= 5.0)
       devise (>= 4.6)
     diff-lcs (1.4.4)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.10.0)
     ffi (1.15.1)
     globalid (0.4.2)
@@ -226,6 +230,7 @@ DEPENDENCIES
   byebug
   devise
   devise_invitable (~> 2.0.0)
+  dotenv-rails (~> 2.8)
   letter_opener
   listen (~> 3.3)
   pg (~> 1.1)
