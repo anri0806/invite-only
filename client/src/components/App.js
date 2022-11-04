@@ -65,7 +65,7 @@ function App() {
             onEditUpdateAvatar={handleUpdateAvatar}
           />
         ) : (
-          <WelcomeContainer onLogin={handleLogin} location={location} />
+          <WelcomeContainer onLogin={handleLogin}  />
         )}
       </UserContext.Provider>
     </div>
