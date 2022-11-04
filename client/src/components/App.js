@@ -3,7 +3,6 @@ import WelcomeContainer from "./WelcomeContainer";
 import HomeContainer from "./HomeContainer";
 import NavBar from "./NavBar";
 
-import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, createContext } from "react";
 
@@ -14,9 +13,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   const navigate = useNavigate();
-
-  let location = useLocation();
-
+  
 
 /////// keep user logged in
 

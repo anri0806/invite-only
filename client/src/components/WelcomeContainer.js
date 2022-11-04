@@ -4,7 +4,7 @@ import InviteeSignup from "./InviteeSignUp";
 import Login from "./Login";
 import Register from "./Register";
 
-function WelcomeContainer({ onLogin, location }) {
+function WelcomeContainer({ onLogin }) {
 
 
   return (
@@ -14,7 +14,7 @@ function WelcomeContainer({ onLogin, location }) {
         <Route path="register" element={<Register onLogin={onLogin} />} />
         <Route
           path="users/invitation/accept/:token"
-          element={<InviteeSignup onLogin={onLogin} location={location} />}
+          element={<InviteeSignup onLogin={onLogin} />}
         />
       </Routes>
     </div>
