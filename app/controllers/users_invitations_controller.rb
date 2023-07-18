@@ -3,6 +3,7 @@ class UsersInvitationsController < Devise::InvitationsController
     respond_to :json
 
     def create
+        # Create temp account with invitation_token
         new_user = User.invite_guest!(invite_params)
 
         if new_user.valid?
@@ -16,8 +17,7 @@ class UsersInvitationsController < Devise::InvitationsController
   
       def update
         # find new user by invitation_token
-        # new_user = User.find_by_invitation_token(params[:invitation_token], true)
-        
+
         # update user data
         new_user = User.accept_invitation!(invitation_token: params[:user][:invitation_token], username: params[:user][:username], password: params[:user][:password], password_confirmation: params[:user][:password_confirmation], admin: params[:user][:admin])
 

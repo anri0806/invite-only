@@ -5,12 +5,12 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   config.action_mailer.delivery_method = :smtp
-  host = "https://invite-only.onrender.com/"
+  host = "https://invite-only-05xs.onrender.com/"
   
   ActionMailer::Base.smtp_settings = {
     address:              "smtp.gmail.com",
     port:                 587,
-    domain:               "invite-only.onrender.com",
+    domain:               "invite-only-05xs.onrender.com",
     user_name:            "invite.only.invitations@gmail.com",
     password:             Rails.application.credentials.google_secret_password,
     authentication:       "plain",
